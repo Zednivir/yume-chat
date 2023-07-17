@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+  <script src="firebaseConfig.js"></script>
+  <link rel="stylesheet" href="App.css">
+  <title>YumeChat</title>
+</head>
+<body>
+  <header>
+    <h1>YumeChat</h1>
+    <button id="toggle-sidebar">
+      <img src="img/side-bar.png" alt="Toggle Sidebar">
+    </button>
+  </header>
+
+  <main>
+    <div class="sidebar">
+      <button id="userButton">
+        <img src="img/profile.png" alt="User Icon">
+        <span class="button-text">User</span>
+      </button>
+      <button id="gearButton">
+        <img src="img/gear.png" alt="Settings Icon">
+        <span class="button-text">Settings</span>
+      </button>
+      <button id="bugButton">
+        <img src="img/bug.png" alt="Bug Icon">
+        <span class="button-text">Debug</span>
+      </button>
+      <button id="plusButton">
+        <img src="img/plus.png" alt="Plus Icon">
+        <span class="button-text">Add</span>
+      </button>
+    </div>
+  
+    <div class="chat-container">
+      <div class="message-container"></div>    
+      <div class="input-container">
+        <textarea id="messageInput" placeholder="Type your message..."></textarea>
+        <button id="sendButton">
+          <img src="img/send.png" alt="Send Icon">
+        </button>
+      </div>                                      
+    </div>
+
+    <div class="userTab">
+      <header class="userTab-header">
+        <h2>User Settings</h2>
+        <button id="closeUser">
+          <img src="img/close.png" alt="Close User">
+        </button>
+      </header>
+      <div class="loginTab">
+        <button onclick="redirectToNonLoggedInVersion()">Log-out</button>
+      </div>
+    </div>
+
+    <div class="settingsTab">
+      <header class="settingsTab-header">
+        <h2>General Settings</h2>
+        <button id="closeSettings">
+          <img src="img/close.png" alt="Close Settings">
+        </button>
+      </header>
+    </div>
+    
+  </main>
+
+  <script src="App.js"></script>
+  <script src="logout.js"></script>
+
+</body>
+
+</html>
+
