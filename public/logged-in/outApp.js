@@ -71,17 +71,37 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  sendButton.addEventListener('click', function(event) {
+  sendButton.addEventListener('click', async function(event) {
     event.preventDefault();
     sendMessage();
   });
-
-  inputElement.addEventListener('keydown', function(event) {
+  
+  inputElement.addEventListener('keydown', async function(event) {
     if (event.key === 'Enter' && !event.shiftKey) {
       event.preventDefault();
       sendMessage();
     }
   });
+
+  // Function to send a message to the AI API
+  async function sendMessageToAI(messageText) {
+    try {
+      const response = await fetch('localhost:3000/api', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          // Add any authorization headers if required
+        },
+        body: JSON.stringify({ message: messageText }),
+      });
+
+      const data = await response.json();
+      return data.message; // Assuming the AI API returns the response in the 'message' field
+    }   catch (error) {
+      console.error('Error sending message to AI:', error);
+      return 'Error: Failed to get AI response.';
+    }
+  }
 
   function sendMessageToFirebase(messageText) {
     messageCollection.add({
@@ -105,15 +125,17 @@ document.addEventListener('DOMContentLoaded', function() {
     scrollToBottom(); // Scroll to the bottom after new messages arrive
   });
 
-  function sendMessage() {
+  async function sendMessage() {
     const messageText = inputElement.value.trim();
     if (messageText !== '') {
-      sendMessageToFirebase(messageText); // Send the message to Firebase
-  
+      const aiResponse = await sendMessageToAI(messageText); // Send message to AI API
+      sendMessageToFirebase(aiResponse); // Save the AI response to Firebase
+
       inputElement.value = '';
       adjustInputHeight();
     }
   }
+
 
   function createMessageElement(text, className) {
     const pElement = document.createElement('p');
