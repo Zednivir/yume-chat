@@ -157,23 +157,18 @@ button#toggle-sidebar img {
   background-color: #1b002b;
 }
 
-.profile-picture img {
-  width: 25px;
-  height: 25px;
-}
-
-.profile-picture {
-  width: 0px;
-  height: 0px;
-}
-
 /* Style for the username in messages */
 .message {
   left:0%
 }
 
 .user-info {
-  position: relative;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 80px;
+  bottom: 40px;
 }
 
 .user-info .avatar {
@@ -190,8 +185,8 @@ button#toggle-sidebar img {
 .message.sent #message-username {
   font-weight: bold;
   color: #ffff;
-  top: -55px; /* Adjust the top value to move the username above the message box */
-  right: 45px;
+  top: -85px; /* Adjust the top value to move the username above the message box */
+  right: 25px;
   position: relative; /* Position the username absolutely */
 }
 
@@ -211,10 +206,13 @@ button#toggle-sidebar img {
 /* Style for sent messages */
 .message.sent .user-info {
   justify-content: flex-end;
+  align-self: flex-end;
   margin-right: -10px;
+  margin-bottom: 0px;
 }
 
 .message.received .user-info {
+  align-self: flex-start;
   right: 20px;
   margin-left: 10px;
 }
@@ -227,7 +225,7 @@ button#toggle-sidebar img {
 .message.received #message-username {
   margin-right: 10px;
   margin-left: 0;
-  top: -40px;
+  margin-top: -40px;
 }
 
 .message.sent .avatar {
@@ -235,13 +233,13 @@ button#toggle-sidebar img {
 }
 
 .message.received .avatar {
-  top: -60px;
+  top: -90px;
 }
 
 .message {
-  margin-bottom: 10px;
-  padding: 10px;
-  border-radius: 4px;
+  margin-bottom: 20px;
+  padding: 50px;
+  border-radius: 80px;
   max-width: 50%;
   word-wrap: break-word;
   white-space: pre-wrap;
@@ -412,7 +410,7 @@ button {
 }
 
 .sidebar {
-  background-color: #25003b;
+  background-color: #2c0046;
   color: #ffffff;
   width: 211px;
   height: 83%;
@@ -515,6 +513,7 @@ button#toggle-sidebar img {
   display: flex;
   position: relative;
   border-radius: 4px;
+  top: 70%;
   max-width: 50%;
   word-wrap: break-word;
   white-space: pre-wrap;
@@ -540,6 +539,14 @@ button#toggle-sidebar img {
   overflow-wrap: break-word;
   width: 65%;
   margin-left: 205px;
+}
+
+.message.double {
+  margin-left: 150px;
+}
+
+.message.active.double {
+  margin-left: 300px;
 }
 
 .sent {
@@ -684,6 +691,14 @@ textarea::-webkit-scrollbar-thumb:active {
   margin-left: 150px;
 }
 
+.settingsTab.double {
+  margin-left: 150px;
+}
+
+.settingsTab.push.double {
+  margin-left: 300px;
+}
+
 .settingsTab-header {
   position: absolute;
   top: 0;
@@ -727,7 +742,7 @@ textarea::-webkit-scrollbar-thumb:active {
   right: 0px;
 }
 
-/* Animation for the settingsTab */
+/*userTab */
 .userTab {
   position: fixed;
   top: -100%;
@@ -749,6 +764,14 @@ textarea::-webkit-scrollbar-thumb:active {
 
 .userTab.push {
   margin-left: 150px;
+}
+
+.userTab.double {
+  margin-left: 150px;
+}
+
+.userTab.push.double {
+  margin-left: 300px;
 }
 
 .userTab-header {
@@ -794,11 +817,6 @@ textarea::-webkit-scrollbar-thumb:active {
   right: 0px;
 }
 
-.userTab.settingsTab.active {
-  bottom: 20%;
-}
-
-
 
 .loginTab {
   display: flex;
@@ -821,8 +839,7 @@ textarea::-webkit-scrollbar-thumb:active {
   background-color: #13001f;
   color: #fff;
   margin-bottom: 10px;
-  width: 300px;
-  max-width: 50%;
+  width: 20%;
   font-family: 'Noto Sans Regular', sans-serif;
 
 }
@@ -844,6 +861,7 @@ textarea::-webkit-scrollbar-thumb:active {
 
 .loginTab button {
   padding: 10px 20px;
+  margin: 10px;
   bottom: 20px;
   background-color: #5e0075;
   border: none;
@@ -857,4 +875,147 @@ textarea::-webkit-scrollbar-thumb:active {
 
 .loginTab button:hover {
   background-color: #6e0085;
+}
+
+/* Use the same styles as the settings tab for the debug tab */
+.debugTab {
+  position: fixed;
+  top: 12%;
+  bottom: -100%;
+  left: -5%;
+  margin-left: -15%;
+  right: 0;
+  background-color: #25003b;
+  color: #ffffff;
+  height: 67%;
+  width: 15%;
+  padding: 20px;
+  border-radius: 20px;
+  transition: bottom 0.3s ease-in-out, margin-left 0.3s ease-in-out;
+  z-index: 0;
+}
+
+.debugTab.active {
+  margin-left: 4%;
+}
+
+.debugTab.push {
+  margin-left: 0%;
+}
+
+.debugTab.push.active {
+  margin-left: 20%;
+}
+
+/* Debug tab header */
+.debugTab-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #38005e;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 20px 20px 0 0;
+  margin-bottom: 20px;
+  z-index: 2;
+}
+
+.debugTab-header h2 {
+  font-size: 1.5rem;
+  margin-left: 5px;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: 'Noto Sans Regular', sans-serif;
+}
+
+.debugTab-header button {
+  width: 50px;
+  height: 50px;
+  margin-right: 5px;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  right: 0;
+}
+
+.debugTab-header button img {
+  width: 42px;
+  height: 42px;
+  margin-right: 5px;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  cursor: pointer;
+  top: 3px;
+  right: 0;
+}
+
+/*bot tab*/
+.botTab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.botTab h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.botTab input {
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #13001f;
+  color: #fff;
+  margin-bottom: 10px;
+  width: 300px;
+  max-width: 50%;
+  margin-bottom: 50%;
+  font-family: 'Noto Sans Regular', sans-serif;
+
+}
+
+.botTab img {
+  width: 100px;
+  height: 100px;
+  bottom: 53%;
+}
+
+.botTab p {
+  font-size: large;
+  margin-bottom: 70%;
+}
+
+
+.botTab button {
+  padding: 10px 20px;
+  margin: 10px;
+  bottom: 20px;
+  background-color: #5e0075;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 1rem;
+  color: #fff;
+  font-family: 'Noto Sans Regular', sans-serif;
+}
+
+.botTab button:hover {
+  background-color: #6e0085;
+}
+
+.openAIKeySection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }

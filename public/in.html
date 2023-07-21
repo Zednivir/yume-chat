@@ -7,7 +7,7 @@
   <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
-  <script src="firebaseConfig.js"></script>
+  <script src="firebaseConfig"></script>
   <link rel="stylesheet" href="App.css">
   <title>YumeChat</title>
 </head>
@@ -57,7 +57,7 @@
         </button>
       </header>
       <div class="loginTab">
-        <p>Profile Picture</p>
+        <p>User Avatar</p>
         <img id="AvatarPreview" class="avatar userAvatar" src="avatars/user/user.png" alt="User Avatar">
         <input type="file" id="avatarFile" accept="image/*" style="display: none;">
         <button id="uploadButton">
@@ -75,6 +75,30 @@
           <img src="img/close.png" alt="Close Settings">
         </button>
       </header>
+      <div class="openAIKeySection">
+        <label for="openAIKey">OpenAI Key:</label>
+        <input type="text" id="openAIKey" placeholder="Enter your OpenAI key...">
+        <button id="saveOpenAIKey">Save</button>
+      </div>    
+    </div>
+
+    <div class="debugTab">
+      <header class="debugTab-header">
+        <h2>Debug</h2>
+        <button id="closeDebug">
+          <img src="img/close.png" alt="Close Debug">
+        </button>
+      </header>
+        <!-- Bot Avatar -->
+      <div class="botTab">
+        <p>Bot Avatar</p>
+        <img id="BotAvatarPreview" class="avatar botAvatar" src="avatars/bot/bot.png" alt="Bot Avatar">
+        <input type="file" id="botAvatarFile" accept="image/*" style="display: none;">
+        <button id="uploadBotButton">
+          Upload Avatar
+        </button>
+        <input id="BotUsername" placeholder="Bot Username"></input>
+      </div>
     </div>
     
   </main>

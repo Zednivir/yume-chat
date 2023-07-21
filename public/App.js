@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+addEventListener('DOMContentLoaded', function() {
   const toggleButton = document.getElementById('toggle-sidebar');
   const closeUser = document.getElementById('closeUser');
   const sidebar = document.querySelector('.sidebar');
@@ -14,6 +14,106 @@ document.addEventListener('DOMContentLoaded', function() {
   const avatarFileInput = document.getElementById('avatarFile');
   const imgElement = document.querySelector('.loginTab img');
   const userAvatarElement = document.querySelector('.userAvatar');
+  const bugButton = document.getElementById('bugButton');
+  const debugTab = document.querySelector('.debugTab');
+  
+   // Declare userDisplayName and openAIKey variables
+   let userDisplayName = 'User'; // Default display name
+   let openAIKey = null;
+ 
+   // Function to save the OpenAI key
+   function saveOpenAIKey() {
+     const openAIKeyInput = document.getElementById('openAIKey');
+     openAIKey = openAIKeyInput.value.trim();
+     settingsTab.classList.remove('active'); // Close the settings tab
+   }
+ 
+   // Function to send user's message to OpenAI and receive bot's reply
+   async function sendToOpenAI(messageText) {
+     const endpoint = 'https://api.openai.com/v1/engines/davinci/completions';
+     const prompt = userDisplayName + ': ' + messageText;
+     const maxTokens = 150;
+     const temperature = 1;
+ 
+     const headers = {
+       'Content-Type': 'application/json',
+       'Authorization': 'Bearer ' + openAIKey,
+     };
+ 
+     const data = JSON.stringify({
+       'prompt': prompt,
+       'max_tokens': maxTokens,
+       'temperature': temperature,
+     });
+ 
+     const response = await fetch(endpoint, {
+       method: 'POST',
+       headers: headers,
+       body: data,
+     });
+ 
+     const result = await response.json();
+     return result.choices[0].text.trim();
+   }
+
+  function adjustMessageContainer() {
+    const chatContainer = document.querySelector('.chat-container');
+    const inputContainer = document.querySelector('.input-container');
+    const sent = document.querySelector('.sent');
+
+    if (debugTab.classList.contains('active') && sidebar.classList.contains('active')) {
+      // If both debug-tab and sidebar are active, do something different
+      messageContainer.style.width = '68.34%';
+      messageContainer.style.marginLeft = '410px';
+      inputContainer.style.marginLeft = '211px';
+    } else if (debugTab.classList.contains('active')) {
+      // If only debug-tab is active
+      messageContainer.style.width = '84.15%';
+      messageContainer.style.marginLeft = '205px';
+      inputContainer.style.marginLeft = '0px';
+    } else if (sidebar.classList.contains('active')) {
+      // If only sidebar is active
+      messageContainer.style.width = '84.15%';
+      messageContainer.style.marginLeft = '205px';
+      inputContainer.style.marginLeft = '211px';
+    } else {
+      // If neither is active
+      messageContainer.style.width = '100%';
+      messageContainer.style.marginLeft = '0';
+      inputContainer.style.marginLeft = '0';
+    }
+
+    const headerHeight = document.querySelector('header').offsetHeight;
+    const inputContainerHeight = inputContainer.offsetHeight;
+    const messageContainerHeight = chatContainer.offsetHeight - headerHeight - inputContainerHeight;
+    messageContainer.style.height = `${messageContainerHeight}px`;
+    scrollToBottom();
+  }
+
+  // Function to toggle the debug tab
+  bugButton.addEventListener('click', function() {
+    debugTab.classList.toggle('active');
+    userTab.classList.toggle('double');
+    settingsTab.classList.toggle('double');
+    adjustMessageContainer(); 
+  });
+
+  // Function to close the debug tab
+  document.getElementById('closeDebug').addEventListener('click', function() {
+    debugTab.classList.remove('active');
+    adjustMessageContainer(); 
+  });
+
+  // Function to toggle the debug tab with the "d" key
+  document.addEventListener('keydown', function(event) {
+    const inputElements = Array.from(document.getElementsByTagName('input'));
+    const textareaElements = Array.from(document.getElementsByTagName('textarea'));
+    const focusedElements = inputElements.concat(textareaElements).filter(element => element === document.activeElement);
+
+    if (event.key === 'd' && !focusedElements.length) {
+      bugButton.click();
+    }
+  });
 
   function handleFileUpload(event) {
     const file = event.target.files[0];
@@ -27,10 +127,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
   
+  // Get the username input element
   const usernameInput = document.getElementById('Username');
+
+  // Function to update the user's display name
   usernameInput.addEventListener('input', function() {
     const newUsername = usernameInput.value.trim();
-    userAvatarElement.setAttribute('data-username', newUsername);
+    userDisplayName = newUsername; // Update the user's display name
   });
 
   uploadButton.addEventListener('click', function() {
@@ -41,8 +144,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Add event listener to handle file selection and upload
   avatarFileInput.addEventListener('change', handleFileUpload);
+
   // Function to toggle the settings tab
   settingsButton.addEventListener('click', function() {
+    if (userTab.classList.contains('active')) {
+      userTab.classList.remove('active');
+    }
     settingsTab.classList.toggle('active');
   });
 
@@ -67,6 +174,7 @@ document.addEventListener('DOMContentLoaded', function() {
     sidebar.classList.toggle('active');
     userTab.classList.toggle('push');
     settingsTab.classList.toggle('push');
+    debugTab.classList.toggle('push');
     adjustMessageContainer();
   });
 
@@ -82,8 +190,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Function to toggle the user settings tab
   userButton.addEventListener('click', function() {
+    if (settingsTab.classList.contains('active')) {
+      settingsTab.classList.remove('active');
+    }
     userTab.classList.toggle('active');
   });
+
 
   // Function to close the user settings tab
   closeUser.addEventListener('click', function() {
@@ -113,40 +225,56 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  function simulateBotReply() {
-    const replyText = "Received"; // Text for the bot's reply
-    const className = 'received'; // CSS class for the bot's message
-    const botAvatar = 'avatars/bot/bot.png'; // Bot's profile picture
-    const messageElement = createMessageElement(replyText, className, botAvatar);
-    messageContainer.appendChild(messageElement);
-    scrollToBottom();
+  // Function to handle bot's replies
+  async function handleBotReply(messageText) {
+    if (!openAIKey) {
+      alert('Please enter your OpenAI key before using the bot.');
+      return;
+    }
+
+    // Add a rate limiting mechanism to avoid making requests too frequently
+    if (handleBotReply.isSendingRequest) {
+      return;
+    }
+
+    handleBotReply.isSendingRequest = true;
+
+    try {
+      const botReply = await sendToOpenAI(messageText);
+
+      if (botReply) {
+        const className = 'received'; // CSS class for the bot's message
+        const botAvatar = 'avatars/bot/bot.png'; // Bot's profile picture
+        const messageElement = createMessageElement(botReply, className, botAvatar);
+        messageContainer.appendChild(messageElement);
+        scrollToBottom();
+      }
+    } catch (error) {
+      console.error('Error sending request to OpenAI:', error);
+    } finally {
+      // Release the rate limiting after a certain delay (e.g., 2 seconds)
+      setTimeout(() => {
+        handleBotReply.isSendingRequest = false;
+      }, 2000);
+    }
   }
 
+  // Function to send user's message
   function sendMessage() {
     const messageText = inputElement.value.trim();
-    const usernameInput = document.getElementById('Username');
-    let username = usernameInput.value.trim();
-  
-    // Use a default username if the username input is empty
-    if (username === '') {
-      username = 'User';
-    }
-  
+
     if (messageText !== '') {
       const className = 'sent'; // CSS class for the user's message
       const userAvatar = 'avatars/user/user.png'; // User's profile picture
-      const messageElement = createMessageElement(messageText, className, userAvatar, username);
+      const messageElement = createMessageElement(messageText, className, userAvatar, userDisplayName);
       messageContainer.appendChild(messageElement);
-      scrollToBottom();
-  
       inputElement.value = '';
       adjustInputHeight();
-  
-      // Simulate bot reply after a delay (e.g., 1 second)
-      setTimeout(simulateBotReply, 1000);
+
+      // Send user's message to OpenAI for bot's reply
+      handleBotReply(messageText);
     }
   }
-  
 
 
   // Function to create the message element
@@ -206,31 +334,12 @@ document.addEventListener('DOMContentLoaded', function() {
     adjustMessageContainer();
   }
 
-  function adjustMessageContainer() {
-    const chatContainer = document.querySelector('.chat-container');
-    const inputContainer = document.querySelector('.input-container');
-
-    if (sidebar.classList.contains('active')) {
-      messageContainer.style.width = 'calc(100% - 211px)';
-      messageContainer.style.marginLeft = '211px';
-      inputContainer.style.marginLeft = '211px';
-    } else {
-      messageContainer.style.width = '100%';
-      messageContainer.style.marginLeft = '0';
-      inputContainer.style.marginLeft = '0';
-    }
-
-    // Adjust message container height based on other elements
-    const headerHeight = document.querySelector('header').offsetHeight;
-    const inputContainerHeight = inputContainer.offsetHeight;
-    const messageContainerHeight = chatContainer.offsetHeight - headerHeight - inputContainerHeight;
-    messageContainer.style.height = `${messageContainerHeight}px`;
-    scrollToBottom();
-  }
-
   inputElement.addEventListener('input', adjustInputHeight);
 
   // Adjust message container height on initial page load
   adjustMessageContainer();
+
+  // Event listener for saving the OpenAI key
+  document.getElementById('saveOpenAIKey').addEventListener('click', saveOpenAIKey);
 
 });
