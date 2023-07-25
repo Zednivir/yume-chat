@@ -9,11 +9,11 @@
   <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
   <script src="firebaseConfig"></script>
   <link rel="stylesheet" href="App.css">
-  <title>YumeChat</title>
+  <title>Midearpin Chat</title>
 </head>
 <body>
   <header>
-    <h1>YumeChat</h1>
+    <h1>Midearpin Chat</h1>
     <button id="toggle-sidebar">
       <img src="img/side-bar.png" alt="Toggle Sidebar">
     </button>
@@ -43,8 +43,14 @@
       <div class="message-container"></div>    
       <div class="input-container">
         <textarea id="messageInput" placeholder="Type your message..."></textarea>
+        <button id="micButton">
+          <img src="img/mic.png" alt="Mic Icon">
+        </button>
         <button id="sendButton">
           <img src="img/send.png" alt="Send Icon">
+        </button>
+        <button id="dotsButton">
+          <img src="img/dots.png" alt="Dots Icon">
         </button>
       </div>                                      
     </div>
@@ -75,6 +81,11 @@
           <img src="img/close.png" alt="Close Settings">
         </button>
       </header>
+    <div class="Settings">
+      <button id="aiSettings">
+        <img src="img/brain.png" alt="Close Settings">
+      </button>
+    </div>
       <div class="openAIKeySection">
         <label for="openAIKey">OpenAI Key:</label>
         <input type="text" id="openAIKey" placeholder="Enter your OpenAI key...">

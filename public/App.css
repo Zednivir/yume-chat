@@ -68,18 +68,6 @@ button {
   font-family: 'Noto Sans Regular', sans-serif;
 }
 
-.sidebar {
-  background-color: #25003b;
-  color: #ffffff;
-  top: 71px;
-  width: 211px;
-  height: 83%;
-  border-radius: 20px;
-  position: fixed;
-  transition: transform 0.3s ease-in-out;
-  transform: translateX(-110%);
-  z-index: 1;
-}
 
 .sidebar.active {
   transform: translateX(0%);
@@ -88,15 +76,15 @@ button {
 .sidebar-button {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
   cursor: pointer;
-  background-color: #25003b;
+  background-color: transparent;
 }
 
 .sidebar-button img {
   width: 50px;
   height: 50px;
   margin-right: 5px;
+  bottom: -50px;
 }
 
 button#toggle-sidebar {
@@ -414,6 +402,7 @@ button {
   color: #ffffff;
   width: 211px;
   height: 83%;
+  bottom: 6.8%;
   border-radius: 20px;
   position: fixed;
   transition: transform 0.3s ease-in-out;
@@ -423,20 +412,6 @@ button {
 
 .sidebar.active {
   transform: translateX(-7%);
-}
-
-.sidebar-button {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-  cursor: pointer;
-  background-color: #25003b;
-}
-
-.sidebar-button img {
-  width: 50px;
-  height: 50px;
-  margin-right: 5px;
 }
 
 button#toggle-sidebar {
@@ -599,8 +574,8 @@ button#toggle-sidebar img {
 }
 
 #sendButton {
-  padding: 10px 20px;
-  background-color: #5e007500;
+  padding: 8px 16px;
+  background-color: transparent;
   border: none;
   cursor: pointer;
   white-space: nowrap;
@@ -608,6 +583,34 @@ button#toggle-sidebar img {
 }
 
 #sendButton img {
+  height: 25px;
+  width: 25px;
+}
+
+#micButton {
+  padding: 8px 2px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  margin-right: 0px;
+}
+
+#micButton img {
+  height: 26px;
+  width: 26px;
+}
+
+#dotsButton {
+  padding: 1px 2px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  margin-right: 0px;
+}
+
+#dotsButton img {
   height: 22px;
   width: 22px;
 }
@@ -709,7 +712,7 @@ textarea::-webkit-scrollbar-thumb:active {
   padding: 10px;
   border-radius: 20px 20px 0 0;
   margin-bottom: 20px;
-  z-index: 2;
+  z-index: 3;
 }
 
 .settingsTab-header h2 {
@@ -740,6 +743,98 @@ textarea::-webkit-scrollbar-thumb:active {
   cursor: pointer;
   top: 3px;
   right: 0px;
+}
+
+.Settings {
+  position: absolute;
+  right: 87.3%;
+  bottom: 0%;
+  background-color: #2c0046;
+  color: #ffffff;
+  height: 80%;
+  width: 7%;
+  padding: 20px;
+  border-radius: 0px 0px 0px 20px;
+  transition: bottom 0.3s ease-in-out, margin-left 0.3s ease-in-out;
+  z-index: 2;
+}
+
+.Settings button {
+  right: 14px;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  cursor: pointer;
+}
+
+.Settings button img {
+  width: 50px;
+  height: 50px;
+}
+
+/*AI tab*/
+.openAIKeySection {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  left: 30%;
+  top: 100%;
+}
+
+.openAIKeySection.active {
+  top: 0%;
+}
+
+.openAIKeySection h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.openAIKeySection input {
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #13001f;
+  color: #fff;
+  margin-bottom: 5px;
+  width: 300px;
+  max-width: 50%;
+  font-family: 'Noto Sans Regular', sans-serif;
+
+}
+
+.openAIKeySection img {
+  width: 100px;
+  height: 100px;
+  bottom: 53%;
+}
+
+.openAIKeySection label {
+  font-size: medium;
+  margin-bottom: 5%;
+}
+
+
+.openAIKeySection button {
+  padding: 10px 20px;
+  margin: 10px;
+  bottom: 20px;
+  background-color: #5e0075;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 1rem;
+  color: #fff;
+  font-family: 'Noto Sans Regular', sans-serif;
+}
+
+.openAIKeySection button:hover {
+  background-color: #6e0085;
 }
 
 /*userTab */
@@ -877,7 +972,7 @@ textarea::-webkit-scrollbar-thumb:active {
   background-color: #6e0085;
 }
 
-/* Use the same styles as the settings tab for the debug tab */
+/*debug tab */
 .debugTab {
   position: fixed;
   top: 12%;
@@ -1012,10 +1107,3 @@ textarea::-webkit-scrollbar-thumb:active {
   background-color: #6e0085;
 }
 
-.openAIKeySection {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
