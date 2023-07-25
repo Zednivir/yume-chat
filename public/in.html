@@ -46,6 +46,9 @@
         <button id="micButton">
           <img src="img/mic.png" alt="Mic Icon">
         </button>
+        <button id="fileButton">
+          <img src="img/file-upload.png" alt="File Icon">
+        </button>
         <button id="sendButton">
           <img src="img/send.png" alt="Send Icon">
         </button>
@@ -83,14 +86,26 @@
       </header>
     <div class="Settings">
       <button id="aiSettings">
-        <img src="img/brain.png" alt="Close Settings">
+        <img src="img/cube.png" alt="AI Settings">
+      </button>
+      <button id="yumeSettings">
+        <img src="img/book.png" alt="Yume Settings">
+      </button>
+      <button id="uiSettings">
+        <img src="img/browser.png" alt="UI Settings">
       </button>
     </div>
       <div class="openAIKeySection">
         <label for="openAIKey">OpenAI Key:</label>
         <input type="text" id="openAIKey" placeholder="Enter your OpenAI key...">
         <button id="saveOpenAIKey">Save</button>
-      </div>    
+      </div>
+      <div class="yumeTab">
+        <label>Yume Settings</label>
+      </div>
+      <div class="uiTab">
+        <label>UI Settings</label>
+      </div>
     </div>
 
     <div class="debugTab">
@@ -100,7 +115,6 @@
           <img src="img/close.png" alt="Close Debug">
         </button>
       </header>
-        <!-- Bot Avatar -->
       <div class="botTab">
         <p>Bot Avatar</p>
         <img id="BotAvatarPreview" class="avatar botAvatar" src="avatars/bot/bot.png" alt="Bot Avatar">

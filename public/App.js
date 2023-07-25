@@ -16,9 +16,52 @@ addEventListener("DOMContentLoaded", function () {
   const userAvatarElement = document.querySelector(".userAvatar");
   const bugButton = document.getElementById("bugButton");
   const debugTab = document.querySelector(".debugTab");
+  const aiSettingsButton = document.getElementById('aiSettings');
+  const yumeSettingsButton = document.getElementById('yumeSettings');
+  const yumeTab = document.querySelector('.yumeTab');
+  const uiSettingsButton = document.getElementById('uiSettings');  
+  const uiTab = document.querySelector('.uiTab');
+  const fileButton = document.getElementById('fileButton');
+
+  function uploadFile(event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const fileContent = e.target.result;
+        displayFileContent(fileContent);
+      };
+      reader.readAsText(file);
+    }
+  }
+  
+  function displayFileContent(content) {
+    const messageElement = createMessageElement(content, 'sent');
+    messageContainer.appendChild(messageElement);
+    scrollToBottom();
+  }
+  
+  fileButton.addEventListener('change', uploadFile);
+    
+  // Add a click event listener to the yumeSettings button
+  yumeSettingsButton.addEventListener('click', () => {
+    yumeTab.classList.add('active');
+    uiTab.classList.remove('active');
+  });
+  
+  // Add a click event listener to the uiSettings button
+  uiSettingsButton.addEventListener('click', () => {
+    uiTab.classList.add('active');
+    yumeTab.classList.remove('active');
+  });
+
+  aiSettingsButton.addEventListener('click', () => {
+    yumeTab.classList.remove('active');
+    uiTab.classList.remove('active');
+  });
 
   // Declare userDisplayName and openAIKey variables
-  let userDisplayName = "User"; // Default display name
+  let userDisplayName = "User";
   let openAIKey = null;
 
   // Function to save the OpenAI key
@@ -384,3 +427,4 @@ addEventListener("DOMContentLoaded", function () {
     .getElementById("saveOpenAIKey")
     .addEventListener("click", saveOpenAIKey);
 });
+
