@@ -305,17 +305,17 @@ addEventListener("DOMContentLoaded", function () {
       alert("Please enter your OpenAI key before using the bot.");
       return;
     }
-
+  
     // Add a rate limiting mechanism to avoid making requests too frequently
     if (handleBotReply.isSendingRequest) {
       return;
     }
-
+  
     handleBotReply.isSendingRequest = true;
-
+  
     try {
       const botReply = await sendToOpenAI(messageText);
-
+  
       if (botReply) {
         const className = "received"; // CSS class for the bot's message
         const botAvatar = "avatars/bot/bot.png"; // Bot's profile picture
@@ -329,6 +329,16 @@ addEventListener("DOMContentLoaded", function () {
       }
     } catch (error) {
       console.error("Error sending request to OpenAI:", error);
+      const className = "received"; // CSS class for the bot's message
+      const errorMessage = "ERROR"; // Error message to display
+      const botAvatar = "avatars/bot/bot.png"; // Bot's profile picture
+      const messageElement = createMessageElement(
+        errorMessage,
+        className,
+        botAvatar
+      );
+      messageContainer.appendChild(messageElement);
+      scrollToBottom();
     } finally {
       // Release the rate limiting after a certain delay (e.g., 2 seconds)
       setTimeout(() => {
@@ -336,6 +346,7 @@ addEventListener("DOMContentLoaded", function () {
       }, 2000);
     }
   }
+  
 
   // Function to send user's message
   function sendMessage() {
@@ -363,33 +374,32 @@ addEventListener("DOMContentLoaded", function () {
   function createMessageElement(text, className, avatarSrc, username) {
     const messageElement = document.createElement("div");
     messageElement.classList.add("message", className);
-
-    // Create a separate div for the user info (avatar and username)
+  
+    // Create the user or bot info div
     const userInfoDiv = document.createElement("div");
-    userInfoDiv.classList.add("user-info");
-
-    // Create and add the avatar image to the user info div
+    userInfoDiv.classList.add(className === "sent" ? "user-info" : "bot-info");
+  
+    // Create and add the avatar image to the user or bot info div
     const avatarElement = document.createElement("img");
-    avatarElement.src =
-      className === "sent" ? userAvatarElement.src : avatarSrc;
+    avatarElement.src = avatarSrc;
     avatarElement.classList.add("avatar");
     avatarElement.style.width = "40px"; // Adjust the width as needed
     avatarElement.style.height = "40px"; // Adjust the height as needed
     userInfoDiv.appendChild(avatarElement);
-
+  
     // Get the username from the data-username attribute of the userAvatarElement
     const usernameText = document.createElement("span");
     usernameText.textContent = username;
     usernameText.id = "message-username"; // Add ID to the username element
     userInfoDiv.appendChild(usernameText);
-
-    // Append the user info div to the messageElement
+  
+    // Append the user or bot info div to the messageElement
     messageElement.appendChild(userInfoDiv);
-
+  
     // Create the message text element
     const pElement = document.createElement("p");
     const lines = text.split("\n"); // Split the text by line breaks
-
+  
     lines.forEach((line, index) => {
       if (line === "" && index < lines.length - 1 && lines[index + 1] === "") {
         // Check for consecutive empty lines
@@ -401,11 +411,12 @@ addEventListener("DOMContentLoaded", function () {
         pElement.appendChild(lineElement);
       }
     });
-
+  
     messageElement.appendChild(pElement);
-
+  
     return messageElement;
   }
+  
 
   function scrollToBottom() {
     messageContainer.scrollTop = messageContainer.scrollHeight;
