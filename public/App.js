@@ -299,6 +299,28 @@ addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  loadChatHistory();
+
+  function loadChatHistory() {
+    fetch("/chats/chat_history.json") // Replace with the correct path to your JSON file
+      .then((response) => response.json())
+      .then((data) => {
+        data.forEach((message) => {
+          const messageElement = createMessageElement(
+            message.text,
+            message.class === "sent" ? "sent" : "received"
+          );
+          messageContainer.appendChild(messageElement);
+        });
+  
+        // Scroll to the bottom after loading the chat history
+        scrollToBottom();
+      })
+      .catch((error) => {
+        console.error("Error loading chat history:", error);
+      });
+  }  
+
   // Function to handle bot's replies
   async function handleBotReply(messageText) {
     if (!openAIKey) {
@@ -367,6 +389,8 @@ addEventListener("DOMContentLoaded", function () {
 
       // Send user's message to OpenAI for bot's reply
       handleBotReply(messageText);
+
+      saveChatHistory();
     }
   }
 
@@ -416,6 +440,37 @@ addEventListener("DOMContentLoaded", function () {
   
     return messageElement;
   }
+
+  function saveChatHistory() {
+    // Get all the chat messages from the message container
+    const messages = Array.from(messageContainer.getElementsByClassName("message"));
+  
+    // Map the chat messages to an array of objects containing message text and class (sent or received)
+    const chatData = messages.map((message) => ({
+      text: message.textContent,
+      class: message.classList.contains("sent") ? "sent" : "received",
+    }));
+  
+    // Convert the chatData array to a JSON string
+    const chatJSON = JSON.stringify(chatData);
+  
+    // Create a Blob with the JSON data
+    const blob = new Blob([chatJSON], { type: "application/json" });
+  
+    // Use the File System Access API to write the Blob to the file
+    window.showSaveFilePicker()
+      .then((fileHandle) => {
+        return fileHandle.createWritable();
+      })
+      .then((fileWriter) => {
+        fileWriter.write(blob);
+        fileWriter.close();
+      })
+      .catch((error) => {
+        console.error("Error saving chat history:", error);
+      });
+  }
+  
   
 
   function scrollToBottom() {
