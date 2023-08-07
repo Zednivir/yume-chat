@@ -178,14 +178,6 @@ button#toggle-sidebar img {
   position: relative; /* Position the username absolutely */
 }
 
-.message.received #message-username {
-  font-weight: bold;
-  color: #ffffff;
-  top: -55px; /* Adjust the top value to move the username above the message box */
-  right: -45px;
-  position: relative; /* Position the username absolutely */
-}
-
 /* Add spacing between avatar and username */
 .user-info .avatar + #message-username {
   margin-left: 10px;
@@ -210,18 +202,9 @@ button#toggle-sidebar img {
   top: -55px;
 }
 
-.message.received #message-username {
-  margin-right: 10px;
-  margin-left: 0;
-  margin-top: -40px;
-}
 
 .message.sent .avatar {
   right: 1px;
-}
-
-.message.received .avatar {
-  top: -90px;
 }
 
 .message {
@@ -480,12 +463,6 @@ button#toggle-sidebar img {
   margin-left: 10px;
 }
 
-.bot-info {
-  top: 85%;
-  left: -100%;
-  margin-left: -10px;
-}
-
 .avatar {
   position: absolute;
   bottom: 105%;
@@ -500,12 +477,17 @@ button#toggle-sidebar img {
   top: 0;
 }
 
-.botAvatar {
-  position: absolute;
-  bottom: 0%;
-  border-radius: 50%;
-  background-color: transparent;
-  border: none;
+.message.received .avatar {
+  top: 65px;
+  right: 60%;
+}
+
+.message.received #message-username {
+  font-weight: bold;
+  color: #ffffff;
+  top: 5px;
+  right: 45px;
+  position: relative;
 }
 
 .message {
@@ -515,7 +497,6 @@ button#toggle-sidebar img {
   position: relative;
   border-radius: 4px;
   top: 70%;
-  max-width: 40%;
   word-wrap: break-word;
   white-space: pre-wrap;
   overflow-wrap: break-word;
@@ -558,6 +539,7 @@ button#toggle-sidebar img {
   margin-right: 15px;
   border-radius: 50px 50px 2px 50px;
   margin-right: 60px;
+  max-width: 40%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -570,7 +552,8 @@ button#toggle-sidebar img {
   background-color: #38005e;
   color: rgb(255, 255, 255);
   text-align: left;
-  margin-right: 90%;
+  max-width: 40%;
+  margin-right: 83%;
   border-radius: 25px 25px 25px 2px;
   display: flex;
   align-items: center;
@@ -1319,11 +1302,13 @@ textarea::-webkit-scrollbar-thumb:active {
   background-color: #6e0085;
 }
 
-/*background/input box color: #13001f
+/*
+background/input box color: #13001f
 sidebar color: #2c0046
 primary color: #38005e
 secondary color: #25003b
 user color: #f0a12a
 button color: #5e0075
-button hover color: #6e0085*/
+button hover color: #6e0085
+*/
 

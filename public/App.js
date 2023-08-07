@@ -323,11 +323,6 @@ addEventListener("DOMContentLoaded", function () {
 
   // Function to handle bot's replies
   async function handleBotReply(messageText) {
-    if (!openAIKey) {
-      alert("Please enter your OpenAI key before using the bot.");
-      return;
-    }
-  
     // Add a rate limiting mechanism to avoid making requests too frequently
     if (handleBotReply.isSendingRequest) {
       return;
@@ -336,7 +331,7 @@ addEventListener("DOMContentLoaded", function () {
     handleBotReply.isSendingRequest = true;
   
     try {
-      const botReply = await sendToOpenAI(messageText);
+      const botReply = await sendToCustomAPI(messageText);
   
       if (botReply) {
         const className = "received"; // CSS class for the bot's message
@@ -350,9 +345,9 @@ addEventListener("DOMContentLoaded", function () {
         scrollToBottom();
       }
     } catch (error) {
-      console.error("Error sending request to OpenAI:", error);
+      console.error("Error sending request to the custom API:", error);
       const className = "received"; // CSS class for the bot's message
-      const errorMessage = "ERROR"; // Error message to display
+      const errorMessage = "An error occurred while processing your message."; // Error message to display
       const botAvatar = "avatars/bot/bot.png"; // Bot's profile picture
       const messageElement = createMessageElement(
         errorMessage,
@@ -369,6 +364,35 @@ addEventListener("DOMContentLoaded", function () {
     }
   }
   
+  // Function to send the message to your custom API
+  async function sendToCustomAPI(messageText) {
+    try {
+      const request = {
+        prompt: messageText,
+        // Add other request parameters as needed for your custom API
+      };
+  
+      const response = await fetch("/api/v1/generate", { // Using relative path for the API request
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(request),
+      });
+  
+      if (!response.ok) {
+        throw new Error("Request failed with status: " + response.status);
+      }
+  
+      const responseBody = await response.json();
+      // Assuming your custom API returns the bot's reply in the 'text' field of the response
+      return responseBody.text;
+    } catch (error) {
+      throw error;
+    }
+  }
+  
+  //So as a joke, I went to my friend's house wearing Pekora's wig and clothes. I could barely stop my laughter as he went as red as a tomato and looked at me from head to toe with a bit of drool in his mouth. The way he stared made mde feel a bit funny too, but I decided to tease him more by taking off my clothes. He asked me, 'Are you serious?' and I said 'Yep peko.' He went silent for what seemed like forever, so I asked him, 'What's the matter peko?' He said he's confused, but then his boner got really hard, which made me take off his clothes. I expected him to scream, 'Stop!' as I kissed him and stroked his cock, but he instead shouted 'Oh God, Pekora!' which made me get a boner myself. Before I knew it, I was blowing him for the first time till he came. His semen was so thick, it got stuck inside my throat no matter how hard I swallowed. He then said, 'I want to fuck you now!' and seeing that we've already gone that far and we were both naked, I obliged. A few hours later, the jerk went all pale and said to me 'Why did we do that? Now I'm not fucking straight.' But he still looked so cute all confused like that, so I took pity on him and reassured while wiping his cum off my face, 'Let's just pretend I'ms till Pekora.'
 
   // Function to send user's message
   function sendMessage() {
