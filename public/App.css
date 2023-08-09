@@ -458,15 +458,15 @@ button#toggle-sidebar img {
 }
 
 .user-info {
-  top: 85%;
+  top: 105%;
   left: 100%;
   margin-left: 10px;
 }
 
 .avatar {
   position: absolute;
-  bottom: 105%;
-  margin-top: -55%;
+  bottom: 90%;
+  margin-top: -75%;
   border-radius: 50%;
   margin-right: 40px;
   background-color: transparent;
@@ -669,6 +669,20 @@ button#toggle-sidebar img {
   font-size: 23px;
 }
 
+/* CSS for the delete button */
+.delete-button {
+  cursor: pointer;
+  margin-left: -125px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+/* Show the delete button when hovering over a sent message */
+.message.sent:hover .delete-button {
+  opacity: 1;
+}
+
+
 textarea {
   flex: 1;
   padding: 9px;
@@ -834,6 +848,67 @@ textarea::-webkit-scrollbar-thumb:active {
 }
 
 /*AI tab*/
+.settingsTab {
+  margin: 0;
+}
+
+/* Style for the slider track (blue) */
+.slider {
+  -webkit-appearance: none;
+  width: 50%;
+  height: 10px;
+  background: #13001f; /* Blue color */
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+/* Style for the slider thumb (red) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  background:  #5e0075;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  background: #6e0085; 
+}
+
+
+/* Style for the number input value text (red) */
+.slider-value::-webkit-inner-spin-button, 
+.slider-value::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.slider-value[type=number] {
+  -moz-appearance: textfield;
+}
+
+.slider-value {
+  width: 40px;
+  text-align: center;
+  background-color: #13001f;
+  color: #ffffff;
+  border: 10px;
+}
+
+.AISet {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  height: 100%;
+  width: 50%;
+  left: 30%;
+  top: 20%;
+  margin-left: -16%;
+}
+
 .openAIKeySection {
   display: flex;
   position: absolute;
@@ -904,12 +979,11 @@ textarea::-webkit-scrollbar-thumb:active {
   background-color: #25003b;
   position: absolute;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+  height: 80%;
   width: 50%;
   left: 30%;
-  top: 0%;
+  top: 20%;
+  margin-left: -16%;
 }
 
 .yumeTab.active {
@@ -971,12 +1045,11 @@ textarea::-webkit-scrollbar-thumb:active {
   background-color: #25003b;
   position: absolute;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+  height: 80%;
   width: 50%;
   left: 30%;
-  top: 0%;
+  top: 20%;
+  margin-left: -16%;
 }
 
 .uiTab.active {

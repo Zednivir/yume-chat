@@ -22,6 +22,31 @@ addEventListener("DOMContentLoaded", function () {
   const uiSettingsButton = document.getElementById('uiSettings');  
   const uiTab = document.querySelector('.uiTab');
   const fileButton = document.getElementById('fileButton');
+  const slider = document.getElementById("mySlider");
+  const sliderValue = document.getElementById("sliderValue");
+
+  // Function to update the slider and text box value
+  function updateValue() {
+    sliderValue.value = slider.value;
+  }
+
+  // Event listener for slider input change
+  slider.addEventListener("input", updateValue);
+
+  // Event listener for text box input change
+  sliderValue.addEventListener("input", () => {
+    // Ensure the entered value is within the valid range
+    if (Number(sliderValue.value) < Number(slider.min)) {
+      sliderValue.value = slider.min;
+    } else if (Number(sliderValue.value) > Number(slider.max)) {
+      sliderValue.value = slider.max;
+    }
+
+    slider.value = sliderValue.value;
+  });
+
+  // Initialize the slider and text box value
+  updateValue();
 
   function uploadFile(event) {
     const file = event.target.files[0];
@@ -147,7 +172,9 @@ addEventListener("DOMContentLoaded", function () {
 
   // Function to close the debug tab
   document.getElementById("closeDebug").addEventListener("click", function () {
-    debugTab.classList.remove("active");
+    debugTab.classList.remove("active");    
+    userTab.classList.toggle("double");
+    settingsTab.classList.toggle("double");
     adjustMessageContainer();
   });
 
@@ -299,27 +326,6 @@ addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  loadChatHistory();
-
-  function loadChatHistory() {
-    fetch("/chats/chat_history.json") // Replace with the correct path to your JSON file
-      .then((response) => response.json())
-      .then((data) => {
-        data.forEach((message) => {
-          const messageElement = createMessageElement(
-            message.text,
-            message.class === "sent" ? "sent" : "received"
-          );
-          messageContainer.appendChild(messageElement);
-        });
-  
-        // Scroll to the bottom after loading the chat history
-        scrollToBottom();
-      })
-      .catch((error) => {
-        console.error("Error loading chat history:", error);
-      });
-  }  
 
   // Function to handle bot's replies
   async function handleBotReply(messageText) {
@@ -414,7 +420,6 @@ addEventListener("DOMContentLoaded", function () {
       // Send user's message to OpenAI for bot's reply
       handleBotReply(messageText);
 
-      saveChatHistory();
     }
   }
 
@@ -459,43 +464,27 @@ addEventListener("DOMContentLoaded", function () {
         pElement.appendChild(lineElement);
       }
     });
+
+    if (className === "sent") {
+      // Create delete button for sent messages
+      const deleteButton = document.createElement("img");
+      deleteButton.src = "img/close.png";
+      deleteButton.classList.add("delete-button");
+      deleteButton.style.width = "20px";
+      deleteButton.style.height = "20px";
+      userInfoDiv.appendChild(deleteButton);
+  
+      // Add click event listener to the delete button
+      deleteButton.addEventListener("click", function () {
+        // Remove the message element from the message container
+        messageElement.remove();
+      });
+    }
   
     messageElement.appendChild(pElement);
   
     return messageElement;
   }
-
-  function saveChatHistory() {
-    // Get all the chat messages from the message container
-    const messages = Array.from(messageContainer.getElementsByClassName("message"));
-  
-    // Map the chat messages to an array of objects containing message text and class (sent or received)
-    const chatData = messages.map((message) => ({
-      text: message.textContent,
-      class: message.classList.contains("sent") ? "sent" : "received",
-    }));
-  
-    // Convert the chatData array to a JSON string
-    const chatJSON = JSON.stringify(chatData);
-  
-    // Create a Blob with the JSON data
-    const blob = new Blob([chatJSON], { type: "application/json" });
-  
-    // Use the File System Access API to write the Blob to the file
-    window.showSaveFilePicker()
-      .then((fileHandle) => {
-        return fileHandle.createWritable();
-      })
-      .then((fileWriter) => {
-        fileWriter.write(blob);
-        fileWriter.close();
-      })
-      .catch((error) => {
-        console.error("Error saving chat history:", error);
-      });
-  }
-  
-  
 
   function scrollToBottom() {
     messageContainer.scrollTop = messageContainer.scrollHeight;

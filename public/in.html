@@ -100,11 +100,13 @@
         <img src="img/browser.png" alt="UI Settings">
       </button>
     </div>
-      <div class="openAIKeySection">
-        <label for="openAIKey">OpenAI Key:</label>
-        <input type="text" id="openAIKey" placeholder="Enter your OpenAI key...">
-        <button id="saveOpenAIKey">Save</button>
+    <div class="AISet">
+      <div class=".openAIKeySection">
+        <label for="openAIKey">Tempature</label>
+        <input type="range" min="0.10" max="2" value="0.65" step="0.01" class="slider" id="mySlider">
+        <input type="number" min="0.10" max="2" value="0.65" step="0.01" class="slider-value" id="sliderValue">
       </div>
+    </div>      
       <div class="yumeTab">
         <label>Yume Settings</label>
       </div>
