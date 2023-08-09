@@ -62,7 +62,6 @@
         </button>
       </div>                                      
     </div>
-
     <div class="userTab">
       <header class="userTab-header">
         <h2>User Settings</h2>
@@ -77,7 +76,6 @@
         <button id="login-button">Log In</button>
       </div>    
     </div>
-
     <div class="settingsTab">
       <header class="settingsTab-header">
         <h2>General Settings</h2>
@@ -96,11 +94,13 @@
         <img src="img/browser.png" alt="UI Settings">
       </button>
     </div>
-      <div class="openAIKeySection">
-        <label for="openAIKey">OpenAI Key:</label>
-        <input type="text" id="openAIKey" placeholder="Enter your OpenAI key...">
-        <button id="saveOpenAIKey">Save</button>
+    <div class="AISet">
+      <div class=".openAIKeySection">
+        <label for="openAIKey">Tempature</label>
+        <input type="range" min="0.10" max="2" value="0.65" step="0.01" class="slider" id="mySlider">
+        <input type="number" min="0.10" max="2" value="0.65" step="0.01" class="slider-value" id="sliderValue">
       </div>
+    </div>      
       <div class="yumeTab">
         <label>Yume Settings</label>
       </div>
@@ -118,7 +118,7 @@
       </header>
       <div class="botTab">
         <p>Bot Avatar</p>
-        <img id="BotAvatarPreview" class="avatar botAvatar" src="avatars/bot/bot.png" alt="Bot Avatar">
+        <img id="BotAvatarPreview" class="avatar botAvatar" src="avatars/bot/bot.png" alt="Bot Avatar" style="height: 100px; width: 100px; top: 51%; left: 25%; z-index: 5;">
         <input type="file" id="botAvatarFile" accept="image/*" style="display: none;">
         <button id="uploadBotButton">
           Upload Avatar
@@ -130,9 +130,10 @@
   </main>
 
   <script src="App.js"></script>
-  <script src="scripts/login.js"></script>
+  <script src="scripts/logout.js"></script>
 
 </body>
 
 </html>
+
 
