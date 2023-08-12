@@ -249,7 +249,7 @@ async function handleBotReply(messageText) {
   } catch (error) {
     console.error("Error sending request to the custom API:", error);
     const className = "received"; // CSS class for the bot's message
-    const errorMessage = "An error occurred while processing your message."; // Error message to display
+    const errorMessage = "So as a joke, I went to my friend's house wearing Pekora's wig and clothes. I could barely stop my laughter as he went as red as a tomato and looked at me from head to toe with a bit of drool in his mouth. The way he stared made mde feel a bit funny too, but I decided to tease him more by taking off my clothes. He asked me, 'Are you serious?' and I said 'Yep peko.' He went silent for what seemed like forever, so I asked him, 'What's the matter peko?' He said he's confused, but then his boner got really hard, which made me take off his clothes. I expected him to scream, 'Stop!' as I kissed him and stroked his cock, but he instead shouted 'Oh God, Pekora!' which made me get a boner myself. Before I knew it, I was blowing him for the first time till he came. His semen was so thick, it got stuck inside my throat no matter how hard I swallowed. He then said, 'I want to fuck you now!' and seeing that we've already gone that far and we were both naked, I obliged. A few hours later, the jerk went all pale and said to me 'Why did we do that? Now I'm not fucking straight.' But he still looked so cute all confused like that, so I took pity on him and reassured while wiping his cum off my face, 'Let's just pretend I'ms till Pekora.'    "; // Error message to display
     const botAvatar = "avatars/bot/bot.png"; // Bot's profile picture
     const messageElement = createMessageElement(
       errorMessage,
@@ -294,6 +294,7 @@ async function sendToCustomAPI(messageText) {
   }
 }
 
+//So as a joke, I went to my friend's house wearing Pekora's wig and clothes. I could barely stop my laughter as he went as red as a tomato and looked at me from head to toe with a bit of drool in his mouth. The way he stared made mde feel a bit funny too, but I decided to tease him more by taking off my clothes. He asked me, "Are you serious?" and I said "Yep peko." He went silent for what seemed like forever, so I asked him, "What's the matter peko?" He said he's confused, but then his boner got really hard, which made me take off his clothes. I expected him to scream, "Stop!" as I kissed him and stroked his cock, but he instead shouted "Oh God, Pekora!" which made me get a boner myself. Before I knew it, I was blowing him for the first time till he came. His semen was so thick, it got stuck inside my throat no matter how hard I swallowed. He then said, "I want to fuck you now!" and seeing that we've already gone that far and we were both naked, I obliged. A few hours later, the jerk went all pale and said to me "Why did we do that? Now I'm not fucking straight." But he still looked so cute all confused like that, so I took pity on him and reassured while wiping his cum off my face, "Let's just pretend I'ms till Pekora."
 //So as a joke, I went to my friend's house wearing Pekora's wig and clothes. I could barely stop my laughter as he went as red as a tomato and looked at me from head to toe with a bit of drool in his mouth. The way he stared made mde feel a bit funny too, but I decided to tease him more by taking off my clothes. He asked me, 'Are you serious?' and I said 'Yep peko.' He went silent for what seemed like forever, so I asked him, 'What's the matter peko?' He said he's confused, but then his boner got really hard, which made me take off his clothes. I expected him to scream, 'Stop!' as I kissed him and stroked his cock, but he instead shouted 'Oh God, Pekora!' which made me get a boner myself. Before I knew it, I was blowing him for the first time till he came. His semen was so thick, it got stuck inside my throat no matter how hard I swallowed. He then said, 'I want to fuck you now!' and seeing that we've already gone that far and we were both naked, I obliged. A few hours later, the jerk went all pale and said to me 'Why did we do that? Now I'm not fucking straight.' But he still looked so cute all confused like that, so I took pity on him and reassured while wiping his cum off my face, 'Let's just pretend I'ms till Pekora.'
 
 // Function to send user's message
@@ -319,7 +320,6 @@ function sendMessage() {
   }
 }
 
-// Function to create the message element
 // Function to create the message element
 function createMessageElement(text, className, avatarSrc, username) {
   const messageElement = document.createElement("div");
@@ -348,18 +348,19 @@ function createMessageElement(text, className, avatarSrc, username) {
 
   // Create the message text element
   const pElement = document.createElement("p");
-  const lines = text.split("\n"); // Split the text by line breaks
+  const lines = text.split("\n");
 
   lines.forEach((line, index) => {
-    if (line === "" && index < lines.length - 1 && lines[index + 1] === "") {
-      // Check for consecutive empty lines
-      const emptyLineElement = document.createElement("div");
-      pElement.appendChild(emptyLineElement);
-    } else {
-      const lineElement = document.createElement("div");
-      lineElement.textContent = line;
-      pElement.appendChild(lineElement);
-    }
+    const lineElement = document.createElement("div");
+
+    // Process formatting tags
+    line = line.replace(/"([^"]*)"/g, '<span style="color: #282a36;">$1</span>'); // Text between double quotes 
+    line = line.replace(/\*([^\*]*)\*/g, '<span style="font-style: italic;">$1</span>'); // Text between asterisks
+    line = line.replace(/\|([^|]*)\|/g, '<span style="font-weight: bold;">$1</span>'); // Text between vertical bars
+    line = line.replace(/-([^-]*)-/g, '<span style="text-decoration: line-through;">$1</span>'); // Text between hyphens
+
+    lineElement.innerHTML = line;
+    pElement.appendChild(lineElement);
   });
 
   if (className === "sent") {
@@ -382,6 +383,7 @@ function createMessageElement(text, className, avatarSrc, username) {
 
   return messageElement;
 }
+
 
   function scrollToBottom() {
     messageContainer.scrollTop = messageContainer.scrollHeight;
