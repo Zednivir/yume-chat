@@ -389,7 +389,7 @@ button {
   border-radius: 20px;
   position: fixed;
   transition: transform 0.3s ease-in-out;
-  transform: translateX(-110%);
+  transform: translateX(-107%);
   z-index: 5;
 }
 
@@ -575,18 +575,19 @@ button#toggle-sidebar img {
   overflow: hidden;
   transition: width 0.3s ease-out, margin-left 0.3s ease-out;
   width: 95%;
+  max-height: 8%;
   z-index: 5;
 }
 
 .sidebar.active + .chat-container .input-container {
   width: 82%;
-  margin-left: 205px;
+  margin-left: 15%;
   transition-delay: -0.05s;
 }
 
 .sidebar.active + .chat-container .input-container.active {
   width: 82%;
-  margin-left: 205px;
+  margin-left: 15%;
 }
 
 #sendButton {
@@ -697,7 +698,7 @@ textarea {
   resize: vertical;
   overflow-y: auto;
   font-family: 'Noto Sans Regular', sans-serif;
-  max-height: 120px;
+  max-height: 60%;
 }
 
 textarea::-webkit-scrollbar {
@@ -741,15 +742,15 @@ textarea::-webkit-scrollbar-thumb:active {
 }
 
 .settingsTab.push {
-  margin-left: 150px;
+  margin-left: 10%;
 }
 
 .settingsTab.double {
-  margin-left: 150px;
+  margin-left: 10%;
 }
 
 .settingsTab.push.double {
-  margin-left: 300px;
+  margin-left: 20%;
 }
 
 .settingsTab-header {
@@ -1129,15 +1130,15 @@ textarea::-webkit-scrollbar-thumb:active {
 }
 
 .userTab.push {
-  margin-left: 150px;
+  margin-left: 10%;
 }
 
 .userTab.double {
-  margin-left: 150px;
+  margin-left: 10%;
 }
 
 .userTab.push.double {
-  margin-left: 300px;
+  margin-left: 20%;
 }
 
 .userTab-header {
@@ -1380,22 +1381,22 @@ textarea::-webkit-scrollbar-thumb:active {
 
 /*Hamburger Menu*/
 .hamburgerMenu {
-  display: inline;
+  display: ruby;
   position: fixed;
   background-color: #1b002b;
   color: #ffffff;
-  margin-top: 40%;
-  left: 2.5%;
-  height: 3%;
-  width: 15%;
+  top: 100%;
+  left: 120.5%;
+  height: 1%;
+  width: 90%;
   border-radius: 8%;
-  transition: height 0.3s ease-out, margin-top 0.3s ease-out bottom 0.3s ease-in-out, margin-left 0.3s ease-in-out;
+  transition: height 0.3s ease-out, top 0.3s ease-out;
   z-index: 0;
 }
 
 .hamburgerMenu.active {
-  height: 36%;
-  margin-top: 21%;
+  height: 56%;
+  top: 50%;
 }
 
 .hamburgerMenu.push {
@@ -1411,7 +1412,15 @@ textarea::-webkit-scrollbar-thumb:active {
   margin-left: 14%;
 }
 
-.hamburgerMenu #bookmarkconv{
+.hamburgerMenu button img {
+  position: absolute;
+  left: 4.5%;
+  margin-top: 6%;
+  height: auto;
+  width: 10%;
+}
+
+.hamburgerMenu.historyconv {
   position: absolute;
   right: 84%;
   top: 4%;
