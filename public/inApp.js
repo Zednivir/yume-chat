@@ -21,6 +21,8 @@ addEventListener("DOMContentLoaded", function () {
     const yumeTab = document.querySelector('.yumeTab');
     const uiSettingsButton = document.getElementById('uiSettings');  
     const uiTab = document.querySelector('.uiTab');
+    const hamburgerMenu = document.querySelector('.hamburgerMenu');
+    const hamButton = document.querySelector('.hamburgerButton');
     const fileButton = document.getElementById('fileButton');
     const slider = document.getElementById("mySlider");
     const sliderValue = document.getElementById("sliderValue");
@@ -108,12 +110,17 @@ addEventListener("DOMContentLoaded", function () {
         settingsButton.click();
       }
     });
+
+    hamButton.addEventListener('click', function() {
+      hamburgerMenu.classList.toggle('active');
+    });
   
     // Function to toggle the sidebar
     toggleButton.addEventListener('click', function() {
         sidebar.classList.toggle("active");
         userTab.classList.toggle("push");
         settingsTab.classList.toggle("push");
+        hamburgerMenu.classList.toggle("push");
         debugTab.classList.toggle("push");
         adjustMessageContainer();
     });
@@ -133,6 +140,7 @@ addEventListener("DOMContentLoaded", function () {
     debugTab.classList.toggle("active");
     userTab.classList.toggle("double");
     settingsTab.classList.toggle("double");
+    hamburgerMenu.classList.remove("active");
     adjustMessageContainer();
   });
 
@@ -305,6 +313,7 @@ addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  // Function to create the message element
   // Function to create the message element
   function createMessageElement(text, className, avatarSrc, username) {
     const messageElement = document.createElement("div");

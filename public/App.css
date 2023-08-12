@@ -575,6 +575,7 @@ button#toggle-sidebar img {
   overflow: hidden;
   transition: width 0.3s ease-out, margin-left 0.3s ease-out;
   width: 95%;
+  z-index: 5;
 }
 
 .sidebar.active + .chat-container .input-container {
@@ -634,16 +635,17 @@ button#toggle-sidebar img {
   width: 26px;
 }
 
-#dotsButton {
+#hamburgerButton {
   padding: 1px 2px;
   background-color: transparent;
   border: none;
   cursor: pointer;
   white-space: nowrap;
-  margin-right: 0px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
-#dotsButton img {
+#hamburgerButton img {
   height: 22px;
   width: 22px;
 }
@@ -1374,6 +1376,63 @@ textarea::-webkit-scrollbar-thumb:active {
 
 .botTab button:hover {
   background-color: #6e0085;
+}
+
+/*Hamburger Menu*/
+.hamburgerMenu {
+  display: inline;
+  position: fixed;
+  background-color: #1b002b;
+  color: #ffffff;
+  margin-top: 40%;
+  left: 2.5%;
+  height: 3%;
+  width: 15%;
+  border-radius: 8%;
+  transition: height 0.3s ease-out, margin-top 0.3s ease-out bottom 0.3s ease-in-out, margin-left 0.3s ease-in-out;
+  z-index: 0;
+}
+
+.hamburgerMenu.active {
+  height: 36%;
+  margin-top: 21%;
+}
+
+.hamburgerMenu.push {
+  margin-left: 16%;
+}
+
+.hamburgerMenu button {
+  margin: -2%;
+  display: none;
+  border: none;
+  background: none;
+  transition: height 0.3s;
+  margin-left: 14%;
+}
+
+.hamburgerMenu #bookmarkconv{
+  position: absolute;
+  right: 84%;
+  top: 4%;
+  height: auto;
+  width: 10%;
+}
+
+.hamburgerMenu button p {
+  color: #ffffff;
+}
+
+.hamburgerMenu.active button {
+  display: inherit;
+}
+
+.hamburgerMenu #slash {
+  display: flex;
+  margin-left: 0.5%;
+  background-color: #ffffff;
+  height: 0.05%;
+  width: 99%;
 }
 
 /*
