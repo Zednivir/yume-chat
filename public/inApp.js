@@ -249,7 +249,7 @@ async function handleBotReply(messageText) {
   } catch (error) {
     console.error("Error sending request to the custom API:", error);
     const className = "received"; // CSS class for the bot's message
-    const errorMessage = "So as a joke, I went to my friend's house wearing Pekora's wig and clothes. I could barely stop my laughter as he went as red as a tomato and looked at me from head to toe with a bit of drool in his mouth. The way he stared made mde feel a bit funny too, but I decided to tease him more by taking off my clothes. He asked me, 'Are you serious?' and I said 'Yep peko.' He went silent for what seemed like forever, so I asked him, 'What's the matter peko?' He said he's confused, but then his boner got really hard, which made me take off his clothes. I expected him to scream, 'Stop!' as I kissed him and stroked his cock, but he instead shouted 'Oh God, Pekora!' which made me get a boner myself. Before I knew it, I was blowing him for the first time till he came. His semen was so thick, it got stuck inside my throat no matter how hard I swallowed. He then said, 'I want to fuck you now!' and seeing that we've already gone that far and we were both naked, I obliged. A few hours later, the jerk went all pale and said to me 'Why did we do that? Now I'm not fucking straight.' But he still looked so cute all confused like that, so I took pity on him and reassured while wiping his cum off my face, 'Let's just pretend I'ms till Pekora.'    "; // Error message to display
+    const errorMessage = "The FitnessGram™ Pacer Test is a multistage aerobic capacity test that progressively gets more difficult as it continues. The 20 meter pacer test will begin in 30 seconds. Line up at the start. The running speed starts slowly, but gets faster each minute after you hear this signal. [beep] A single lap should be completed each time you hear this sound. [ding] Remember to run in a straight line, and run as long as possible. The second time you fail to complete a lap before the sound, your test is over. The test will begin on the word start. On your mark, get ready, start."; // Error message to display
     const botAvatar = "avatars/bot/bot.png"; // Bot's profile picture
     const messageElement = createMessageElement(
       errorMessage,
@@ -322,6 +322,11 @@ function sendMessage() {
 
 // Function to create the message element
 function createMessageElement(text, className, avatarSrc, username) {
+  // Create the message container
+  const messagePlace = document.createElement("div");
+  messagePlace.classList.add("message-place");
+
+  // Create the message element
   const messageElement = document.createElement("div");
   messageElement.classList.add("message", className);
 
@@ -377,13 +382,43 @@ function createMessageElement(text, className, avatarSrc, username) {
       // Remove the message element from the message container
       messageElement.remove();
     });
+
+     // Create edit button for sent messages
+     const editButton = document.createElement("img");
+     editButton.src = "img/pen.png";
+     editButton.classList.add("delete-button");
+     editButton.style.width = "20px";
+     editButton.style.height = "20px";
+     userInfoDiv.appendChild(editButton);
+ 
+     // Create the edit element
+     const editElement = document.createElement("div");
+     editElement.classList.add("editElement");
+     // Apply initial styles to hide the edit element and match size
+     editElement.style.display = "none";
+     editElement.style.flex = "1"; // Fill available space in the message-place
+     messagePlace.appendChild(editElement);
+ 
+     // Add click event listener to the edit button
+     editButton.addEventListener("click", function () {
+       // Toggle flex display for editElement
+       editElement.style.display = editElement.style.display === "flex" ? "none" : "flex";
+
+       messageElement.style.display = "none";
+
+ 
+       // Copy the content of the message element into the edit element
+       if (editElement.style.display === "flex") {
+         const messageContent = pElement.innerHTML; // Get the HTML content of the message
+         editElement.innerHTML = messageContent; // Set the same content in the edit element
+       }
+     });
   }
 
   messageElement.appendChild(pElement);
 
   return messageElement;
 }
-
 
   function scrollToBottom() {
     messageContainer.scrollTop = messageContainer.scrollHeight;

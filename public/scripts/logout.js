@@ -1,5 +1,5 @@
 function redirectToNonLoggedInVersion() {
-    window.location.href = "index.html";
+    window.location.href = "old/out.html";
   }
 
 function handleLogout() {
@@ -7,7 +7,7 @@ function handleLogout() {
       .then(() => {
         // Handle successful logout
         console.log('Logged out successfully.');
-        window.location.href = "index.html"; // Redirect to the login page after logout
+        window.location.href = "old/out.html"; // Redirect to the login page after logout
       })
       .catch((error) => {
         // Handle errors here

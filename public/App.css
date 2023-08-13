@@ -150,8 +150,8 @@ button#toggle-sidebar img {
   color: white;
   height: 150%;
   width: auto;
-  margin-left: 10%;
-  font-size: larger;
+  margin-left: 30%;
+  font-size: 200%;
 }
 
 /* Style for the username in messages */
@@ -182,7 +182,7 @@ button#toggle-sidebar img {
 .message.sent #message-username {
   font-weight: bold;
   color: #ffff;
-  top: -85px; /* Adjust the top value to move the username above the message box */
+  top: -55px; /* Adjust the top value to move the username above the message box */
   right: 25px;
   position: relative; /* Position the username absolutely */
 }
@@ -206,9 +206,15 @@ button#toggle-sidebar img {
   margin-left: 10px;
 }
 
+.message.received .avatar {
+  position: absolute;
+  margin-top: -30%;
+  left: 3%;
+}
+
 .message.sent #message-username {
   margin-right: 10px;
-  top: -55px;
+  top: -5px;
 }
 
 
@@ -217,10 +223,10 @@ button#toggle-sidebar img {
 }
 
 .message {
-  margin-bottom: 20px;
-  padding: 50px;
-  border-radius: 80px;
-  max-width: 50%;
+  margin-bottom: 8%;
+  padding: 20%;
+  border-radius: 32%;
+  max-width: 40%;
   word-wrap: break-word;
   white-space: pre-wrap;
   overflow-wrap: break-word;
@@ -233,26 +239,13 @@ button#toggle-sidebar img {
   transition: width 0.3s ease-out, margin-left 0.3s ease-out;
 }
 
-.message.active {
-  margin-bottom: 10px;
-  padding: 10px;
-  border-radius: 4px;
-  font-family: 'Noto Sans Regular', sans-serif;
-  max-width: 50%;
-  min-width: 10%;
-  word-wrap: break-word;
-  white-space: pre-wrap;
-  overflow-wrap: break-word;
-  width: 65%;
-  margin-left: 205px;
-}
 
 .sent {
   background-color: #f0a12a;
   color: rgb(0, 0, 0);
   text-align: left;
   margin-left: auto;
-  margin-right: 15px;
+  margin-right: 4%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -266,6 +259,9 @@ button#toggle-sidebar img {
   color: rgb(255, 255, 255);
   text-align: left;
   align-self: flex-start;
+  min-width: 30%;
+  max-width: 40%;
+  left: 14%;
   z-index: 0;
 }
 
@@ -683,7 +679,7 @@ button#toggle-sidebar img {
 /* CSS for the delete button */
 .delete-button {
   cursor: pointer;
-  margin-left: -125px;
+  margin-left: -135px;
   margin-bottom: 15%;
   opacity: 0;
   transition: opacity 0.2s;
@@ -694,6 +690,33 @@ button#toggle-sidebar img {
   opacity: 1;
 }
 
+/* CSS for the delete button */
+.edit-button {
+  cursor: pointer;
+  margin-left: -135px;
+  margin-bottom: 15%;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+/* Show the delete button when hovering over a sent message */
+.message.sent:hover .edit-button {
+  opacity: 1;
+}
+
+.editElement {
+  background-color: #f0a12a;
+  color: rgb(0, 0, 0);
+  text-align: left;
+  margin-left: auto;
+  margin-right: 4%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: flex-end;
+  flex-direction: row-reverse;
+  z-index: 0;
+}
 
 textarea {
   flex: 1;
@@ -954,7 +977,7 @@ textarea::-webkit-scrollbar-thumb:active {
   font-family: 'Noto Sans Regular', sans-serif;
 }
 
-.koboldKey {
+.koboldKey textarea {
   padding: 10px;
   border: none;
   border-radius: 4px;
