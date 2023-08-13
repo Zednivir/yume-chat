@@ -1,6 +1,6 @@
 # Midearpin Chat
 
-Welcome to the Personal Chat App! This is a locally hosted chat application that allows you to chat with Yume an AI, customize your profile, and enjoy a variety of features for engaging conversations.
+Welcome to Midearpin Chat! This is a locally hosted chat application that allows you to chat with Yume an AI, customize your profile, and enjoy a variety of features for engaging conversations.
 
 ## Features
 
@@ -9,12 +9,12 @@ Welcome to the Personal Chat App! This is a locally hosted chat application that
 - **Message Formatting:** Express yourself with message formatting including italics, bold, quotes and much more.
 - **File and Image Sharing (coming soon):** Easily send images and files to enhance your conversations.
 - **Voice Messaging (planned):** Send and receive voice messages for a more dynamic chat experience.
-- **Video and voice calling (planned):** Look forward to voice and video calling wi Yume.
+- **Video and voice calling (planned):** Look forward to voice and video calling with Yume.
 
 ## Getting Started
 
-1. Clone this repository to your local machine.
-2. Run the start.bat (or start.sh on linux) file
+1. Clone this repository to your local machine
+2. Run the start.bat file (or start.sh on linux)
 3. Start chatting with the AI
 
 ## Contributing
@@ -23,4 +23,4 @@ This is a personal project, and contributions are not currently being accepted. 
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the MIT License.
