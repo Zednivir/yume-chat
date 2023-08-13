@@ -403,9 +403,6 @@ function createMessageElement(text, className, avatarSrc, username) {
      editButton.addEventListener("click", function () {
        // Toggle flex display for editElement
        editElement.style.display = editElement.style.display === "flex" ? "none" : "flex";
-
-       messageElement.style.display = "none";
-
  
        // Copy the content of the message element into the edit element
        if (editElement.style.display === "flex") {
