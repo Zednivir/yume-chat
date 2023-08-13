@@ -7,7 +7,7 @@ Welcome to the Personal Chat App! This is a locally hosted chat application that
 - **AI Conversations:** Engage in chat conversations with Yume
 - **Profile Customization:** Personalize your profile by setting a profile picture and display name.
 - **Message Formatting:** Express yourself with message formatting including italics, bold, quotes and much more.
-- **File and Image Sharing (coming very soob:** Easily send images and files to enhance your conversations.
+- **File and Image Sharing (coming soon):** Easily send images and files to enhance your conversations.
 - **Voice Messaging (planned):** Send and receive voice messages for a more dynamic chat experience.
 - **Video and voice calling (planned):** Look forward to voice and video calling wi Yume.
 
