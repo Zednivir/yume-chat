@@ -1,4 +1,4 @@
-### Midearpin Chat
+# Midearpin Chat
 
 Welcome to the Personal Chat App! This is a locally hosted chat application that allows you to chat with Yume an AI, customize your profile, and enjoy a variety of features for engaging conversations.
 
