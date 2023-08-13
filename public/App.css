@@ -943,7 +943,18 @@ textarea::-webkit-scrollbar-thumb:active {
   width: 300px;
   max-width: 50%;
   font-family: 'Noto Sans Regular', sans-serif;
+}
 
+.openAIKeySection textarea {
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #13001f;
+  color: #fff;
+  margin-bottom: 5px;
+  width: 300px;
+  max-width: 50%;
+  font-family: 'Noto Sans Regular', sans-serif;
 }
 
 .openAIKeySection img {
