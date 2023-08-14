@@ -105,6 +105,23 @@ button#toggle-sidebar img {
   justify-content: space-between;
 }
 
+.Logo {
+  left: 0;
+}
+
+header h1 {
+  margin-left: 3%;
+}
+
+.Logo {
+  position: absolute;
+  margin-top: -10%;
+  left: 1%;
+  top: 22%;
+  height: auto;
+  width: 3%;
+}
+
 .message-container {
   flex: 1;
   padding: 15px;
@@ -885,6 +902,10 @@ textarea::-webkit-scrollbar-thumb:active {
 /*AI tab*/
 .settingsTab {
   margin: 0;
+}
+
+.Temp {
+  margin: 30%;
 }
 
 /* Style for the slider track (blue) */

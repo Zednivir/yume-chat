@@ -397,14 +397,12 @@ function createMessageElement(text, className, avatarSrc, username) {
      // Apply initial styles to hide the edit element and match size
      editElement.style.display = "none";
      editElement.style.flex = "1"; // Fill available space in the message-place
-     messagePlace.appendChild(editElement);
+     messageElement.appendChild(editElement);
  
      // Add click event listener to the edit button
      editButton.addEventListener("click", function () {
        // Toggle flex display for editElement
        editElement.style.display = editElement.style.display === "flex" ? "none" : "flex";
-
-       messageElement.style.display = "none";
 
  
        // Copy the content of the message element into the edit element
