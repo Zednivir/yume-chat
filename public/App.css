@@ -4,6 +4,23 @@
 }
 
 body {
+  top: 0;
+}
+
+:root {
+  --true-background-color: #10001b;
+  --background: #13001f;
+  --sidebar-color: #2c0046;
+  --primary-color: #38005e;
+  --secondary-color: #25003b;
+  --user-color: #f0a12a;
+  --button-color: #5e0075;
+  --button-hover-color: #6e0085;
+  --hamburger-menu-color: #1b002b;
+  --text-color: #ffffff;
+}
+
+body {
   background-color: #282a36;
   font-family: 'Noto Sans Regular', sans-serif;
   margin: 0;
@@ -12,11 +29,11 @@ body {
   z-index: 0;
 }
 
-header {
+.header {
   background-color: #38005e;
   color: rgb(255, 255, 255);
   padding: 18px;
-  z-index: 4;
+  z-index: 10;
   font-family: 'Noto Sans Regular', sans-serif;
 }
 
@@ -45,7 +62,7 @@ html{
 
 main {
   height: 100%;
-  background-color: #13001f;
+  background-color: var(--true-background-color);
   height: calc(100vh - 60px);
   display: flex;
   flex-direction: row;
@@ -75,6 +92,11 @@ button#toggle-sidebar img {
 }
 
 .chat-container {
+  background-color: var(--background);
+  margin-top: -1.19%;
+  height: 100%;
+  max-width: 65%;
+  margin-left: 15%;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -85,7 +107,7 @@ button#toggle-sidebar img {
   left: 0;
 }
 
-header h1 {
+.header h1 {
   margin-left: 3%;
 }
 
@@ -111,31 +133,7 @@ header h1 {
 }
 
 .message-container.active {
-  width: 65%;
-  margin-left: 205px;
-  height: calc(100% - 30px);
-  overflow-y: scroll;
-}
-
-.message-container::-webkit-scrollbar {
-  width: 25px;
-}
-
-.message-container::-webkit-scrollbar-track {
-  background-color: #13001f;
-}
-
-.message-container::-webkit-scrollbar-thumb {
-  background-color: #25003b;
-  border-radius: 4px;
-}
-
-.message-container::-webkit-scrollbar-thumb:hover {
-  background-color: #1f0031;
-}
-
-.message-container::-webkit-scrollbar-thumb:active {
-  background-color: #1b002b;
+  flex: 1;
 }
 
 .welcome {
@@ -143,7 +141,7 @@ header h1 {
   color: white;
   height: 150%;
   width: auto;
-  margin-left: 30%;
+  margin-left: 25%;
   font-size: 200%;
 }
 
@@ -198,10 +196,7 @@ header h1 {
 }
 
 .user-info .avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  bottom: 50px;
+  position: relative;
 }
 
 .message {
@@ -211,8 +206,6 @@ header h1 {
 .message.sent #message-username {
   font-weight: bold;
   color: #ffff;
-  top: -55px; /* Adjust the top value to move the username above the message box */
-  right: 25px;
   position: relative; /* Position the username absolutely */
 }
 
@@ -223,32 +216,39 @@ header h1 {
 
 /* Style for sent messages */
 .message.sent .user-info {
-  justify-content: flex-end;
-  align-self: flex-end;
-  margin-right: -10px;
-  margin-bottom: 0px;
+  position: relative;
+  left: 2%;
+  top: 40%;
 }
 
 .message.received .user-info {
-  align-self: flex-start;
-  right: 20px;
-  margin-left: 10px;
+  position: relative;
 }
 
 .message.received .avatar {
-  position: absolute;
-  margin-top: -30%;
-  left: 3%;
+  position: relative;
+  left: 2%;
 }
 
 .message.sent #message-username {
-  margin-right: 10px;
-  top: -5px;
+  position: relative;
+  left: 2%;
 }
 
 
 .message.sent .avatar {
-  right: 1px;
+  position: relative;
+}
+
+.message.received .avatar {
+  position: relative;
+}
+
+.message.received #message-username {
+  position: relative;
+  font-weight: bold;
+  color: #ffffff;
+  left: -2%;
 }
 
 .message {
@@ -269,30 +269,6 @@ header h1 {
 }
 
 
-.sent {
-  background-color: #f0a12a;
-  color: rgb(0, 0, 0);
-  text-align: left;
-  margin-left: auto;
-  margin-right: 4%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  align-self: flex-end;
-  flex-direction: row-reverse;
-  z-index: 0;
-}
-
-.received {
-  background-color: #38005e;
-  color: rgb(255, 255, 255);
-  text-align: left;
-  align-self: flex-start;
-  min-width: 30%;
-  max-width: 40%;
-  left: 14%;
-  z-index: 0;
-}
 
 .input-container {
   display: flex;
@@ -308,16 +284,6 @@ header h1 {
   width: 95%;
 }
 
-.sidebar.active + .chat-container .input-container {
-  width: 82%;
-  margin-left: 205px;
-  transition-delay: -0.05s;
-}
-
-.sidebar.active + .chat-container .input-container.active {
-  width: 82%;
-  margin-left: 205px;
-}
 
 #sendButton {
   padding: 10px 20px;
@@ -345,26 +311,6 @@ header h1 {
   margin-right: 5px;
 }
 
-@font-face {
-  font-family: 'Noto Sans Regular';
-  src: url('noto-sans-regular.ttf') format('truetype');
-}
-
-body {
-  background-color: #282a36;
-  font-family: 'Noto Sans Regular', sans-serif;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-header {
-  background-color: #38005e;
-  color: rgb(255, 255, 255);
-  padding: 18px;
-  z-index: 2;
-  font-family: 'Noto Sans Regular', sans-serif;
-}
 
 .header .toggle-sidebar img {
   width: 55px;
@@ -397,17 +343,6 @@ h1 {
 
 html{
   height: 100%;
-}
-
-main {
-  height: 100%;
-  background-color: #13001f;
-  height: calc(100vh - 60px);
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 15px;
-  font-family: 'Noto Sans Regular', sans-serif;
 }
 
 button {
@@ -464,14 +399,11 @@ button#toggle-sidebar img {
 }
 
 .message-container.active {
-  width: 65%;
-  margin-left: 205px;
-  height: calc(100% - 30px);
-  overflow-y: scroll;
+  flex: 1;
 }
 
 .message-container::-webkit-scrollbar {
-  width: 25px;
+  width: auto;
 }
 
 .message-container::-webkit-scrollbar-track {
@@ -511,22 +443,6 @@ button#toggle-sidebar img {
   top: 0;
 }
 
-
-.message.received .avatar {
-  top: 65px;
-  right: 60%;
-}
-
-.message.received #message-username {
-  position: absolute;
-  font-weight: bold;
-  color: #ffffff;
-  text-align: left;
-  top: -50%;
-  right: 75%;
-}
-
-
 .message {
   margin-bottom: 10px;
   padding: 10px;
@@ -546,57 +462,22 @@ button#toggle-sidebar img {
   transition: width 0.3s ease-out, margin-left 0.3s ease-out;
 }
 
-.message.active {
-  margin-bottom: 10px;
-  padding: 10px;
-  border-radius: 4px;
-  font-family: 'Noto Sans Regular', sans-serif;
-  max-width: 50%;
-  min-width: 10%;
-  word-wrap: break-word;
-  white-space: pre-wrap;
-  overflow-wrap: break-word;
-  width: 65%;
-  margin-left: 205px;
-}
-
-.message.double {
-  margin-left: 150px;
-}
-
-.message.active.double {
-  margin-left: 300px;
-}
 
 .sent {
-  background-color: #f0a12a;
-  color: rgb(0, 0, 0);
+  background-color: var(--hamburger-menu-color);
+  color: #ffffff;
   text-align: left;
-  margin-left: auto;
-  margin-right: 15px;
-  border-radius: 50px 50px 2px 50px;
-  margin-right: 60px;
-  max-width: 40%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  align-self: flex-end;
-  flex-direction: row-reverse;
+  min-width: 98%;
+  position: relative;
   z-index: 0;
 }
 
 .received {
-  background-color: #38005e;
-  color: rgb(255, 255, 255);
+  background-color: var(--button-color);
+  color: #ffffff;
   text-align: left;
-  max-width: 40%;
-  margin-right: 83%;
-  border-radius: 25px 25px 25px 2px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  align-self: flex-end;
-  flex-direction: row-reverse;
+  min-width: 98%;
+  position: relative;
   z-index: 0;
 }
 
@@ -614,17 +495,6 @@ button#toggle-sidebar img {
   width: 95%;
   max-height: 8%;
   z-index: 5;
-}
-
-.sidebar.active + .chat-container .input-container {
-  width: 82%;
-  margin-left: 15%;
-  transition-delay: -0.05s;
-}
-
-.sidebar.active + .chat-container .input-container.active {
-  width: 82%;
-  margin-left: 15%;
 }
 
 #sendButton {
@@ -687,6 +557,7 @@ button#toggle-sidebar img {
   width: 22px;
 }
 
+
 .sidebar button {
   display: flex;
   align-items: center;
@@ -710,9 +581,10 @@ button#toggle-sidebar img {
 
 /* CSS for the delete button */
 .delete-button {
+  position: relative;
   cursor: pointer;
-  margin-left: -135px;
-  margin-bottom: 15%;
+  right: -889%;
+  top: 70%;
   opacity: 0;
   transition: opacity 0.2s;
 }
@@ -724,9 +596,11 @@ button#toggle-sidebar img {
 
 /* CSS for the delete button */
 .edit-button {
+  position: relative;
   cursor: pointer;
-  margin-left: -135px;
-  margin-bottom: 15%;
+  right: -889%;
+  top: 36%;
+  margin: -50%;
   opacity: 0;
   transition: opacity 0.2s;
 }

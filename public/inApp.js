@@ -145,8 +145,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   toggleButton.addEventListener('click', function () {
     sidebar.classList.toggle("active");
-    userTab.classList.toggle("push");
-    settingsTab.classList.toggle("push");
+    //userTab.classList.toggle("push");
+    //settingsTab.classList.toggle("push");
     hamburgerMenu.classList.toggle("push");
     debugTab.classList.toggle("push");
     hamburgerMenu.classList.remove("active");
@@ -165,16 +165,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   bugButton.addEventListener("click", function () {
     debugTab.classList.toggle("active");
-    userTab.classList.toggle("double");
-    settingsTab.classList.toggle("double");
+    //userTab.classList.toggle("double");
+    //settingsTab.classList.toggle("double");
     hamburgerMenu.classList.remove("active");
     adjustMessageContainer();
   });
 
   document.getElementById("closeDebug").addEventListener("click", function () {
     debugTab.classList.remove("active");
-    userTab.classList.toggle("double");
-    settingsTab.classList.toggle("double");
+    //userTab.classList.toggle("double");
+    //settingsTab.classList.toggle("double");
     adjustMessageContainer();
   });
 
@@ -375,6 +375,7 @@ document.addEventListener("DOMContentLoaded", function () {
       editElement.classList.add("editElement");
       editElement.style.display = "none";
       editElement.style.flex = "1";
+      editButton.classList.add("edit-button")
       editButton.addEventListener("click", () => {
         editElement.style.display = editElement.style.display === "flex" ? "none" : "flex";
         if (editElement.style.display === "flex") {
@@ -400,29 +401,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function adjustMessageContainer() {
     const chatContainer = document.querySelector(".chat-container");
-    const inputContainer = document.querySelector(".input-container");
 
     if (debugTab.classList.contains("active") && sidebar.classList.contains("active")) {
-      messageContainer.style.width = "68.34%";
-      messageContainer.style.marginLeft = "410px";
-      inputContainer.style.marginLeft = "211px";
+      messageContainer.style.width = "73%";
+      messageContainer.style.marginLeft = "27%";
     } else if (debugTab.classList.contains("active")) {
-      messageContainer.style.width = "84.15%";
-      messageContainer.style.marginLeft = "205px";
-      inputContainer.style.marginLeft = "0px";
-    } else if (sidebar.classList.contains("active")) {
-      messageContainer.style.width = "84.15%";
-      messageContainer.style.marginLeft = "205px";
-      inputContainer.style.marginLeft = "211px";
+      messageContainer.style.width = "100%";
+      messageContainer.style.marginLeft = "0";
     } else {
       messageContainer.style.width = "100%";
       messageContainer.style.marginLeft = "0";
-      inputContainer.style.marginLeft = "0";
     }
 
     const headerHeight = document.querySelector("header").offsetHeight;
-    const inputContainerHeight = inputContainer.offsetHeight;
-    const messageContainerHeight = chatContainer.offsetHeight - headerHeight - inputContainerHeight;
+    const messageContainerHeight = chatContainer.offsetHeight - headerHeight;
     messageContainer.style.height = `${messageContainerHeight}px`;
     scrollToBottom();
   }
