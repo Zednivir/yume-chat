@@ -20,6 +20,12 @@
   <header>
     <img class="Logo" src="favicon-16x16.png">
     <h1>Midearpin Chat</h1>
+    <button id="videoButton">
+      <img src="img/video-camera.png" alt="Call">
+    </button>
+    <button id="callButton">
+      <img src="img/phone-call.png" alt="Call">
+    </button>
     <button id="toggle-sidebar">
       <img src="img/side-bar.png" alt="Toggle Sidebar">
     </button>
@@ -82,11 +88,11 @@
       </header>
       <div class="loginTab">
         <p>User Avatar</p>
-        <img id="AvatarPreview" class="avatar userAvatar" src="avatars/user/user.png" alt="User Avatar" style="height: 100px; width: 100px; top: 152%; left: 43%; z-index: 5;">
-        <input type="file" id="avatarFile" accept="image/*" style="display: none;">
-        <button id="uploadButton">
-          Upload Avatar
-        </button>
+        <div class="user-avatar-section">
+          <img id="AvatarPreview" class="avatar userAvatar" src="avatars/user/user.png" alt="User Avatar">
+          <label for="avatarFile" class="custom-upload-button">Upload Avatar</label>
+          <input type="file" id="avatarFile" accept="image/*">
+        </div>
           <input id="Username" placeholder="Username"></input>
        <!-- <button onclick="redirectToNonLoggedInVersion()">Log-out</button>  --> 
       </div>        
@@ -135,11 +141,11 @@
       </header>
       <div class="botTab">
         <p>Bot Avatar</p>
-        <img id="BotAvatarPreview" class="avatar botAvatar" src="avatars/bot/bot.png" alt="Bot Avatar" style="height: 100px; width: 100px; top: 60%; left: 30%; z-index: 5;">
-        <input type="file" id="botAvatarFile" accept="image/*" style="display: none;">
-        <button id="uploadBotButton">
-          Upload Avatar
-        </button>
+        <div class="bot-avatar-section">
+          <img id="BotAvatarPreview" class="avatar botAvatar" src="avatars/bot/bot.png" alt="Bot Avatar">
+          <label for="avatarFile" class="custom-upload-button">Upload Avatar</label>
+          <input type="file" id="botAvatarFile" accept="image/*">
+        </div>
         <input id="BotUsername" placeholder="Bot Username"></input>
       </div>
     </div>
