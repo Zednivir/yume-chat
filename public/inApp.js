@@ -258,7 +258,7 @@ document.addEventListener("DOMContentLoaded", function () {
     } catch (error) {
       console.error("Error sending request to the custom API:", error);
       const className = "received";
-      const errorMessage = "Error, couldn't connect to API. Also sugma cock.";
+      const errorMessage = "Error, couldn't connect to API.";
       const botAvatar = botImgElement.src; // Use the updated bot avatar URL
       const messageElement = createMessageElement(errorMessage, className, botAvatar, botDisplayName);
       messageContainer.appendChild(messageElement);
@@ -314,80 +314,90 @@ document.addEventListener("DOMContentLoaded", function () {
   function createMessageElement(text, className, avatarSrc, username) {
     const messageElement = document.createElement("div");
     messageElement.classList.add("message", className);
-  
+
     const userInfoDiv = document.createElement("div");
     userInfoDiv.classList.add(className === "sent" ? "user-info" : "bot-info");
-  
+
     const avatarElement = document.createElement("img");
     avatarElement.src = avatarSrc;
     avatarElement.classList.add("avatar");
     avatarElement.style.width = "40px";
     avatarElement.style.height = "40px";
     userInfoDiv.appendChild(avatarElement);
-  
+
     const usernameText = document.createElement("span");
     usernameText.textContent = username;
     usernameText.id = "message-username";
     userInfoDiv.appendChild(usernameText);
-  
+
     messageElement.appendChild(userInfoDiv);
-  
+
     const pElement = document.createElement("p");
-  
+
     const formattingRules = [
-      { pattern: /"([^"]*)"/g, style: 'color: #282a36;' },
-      { pattern: /\*([^\*]*)\*/g, style: 'font-style: italic;' },
-      { pattern: /\|([^|]*)\|/g, style: 'font-weight: bold;' },
-      { pattern: /-([^-]*)-/g, style: 'text-decoration: line-through;' }
+        { pattern: /"([^"]*)"/g, style: 'color: #d8d8d8;' },
+        { pattern: /\*([^\*]*)\*/g, style: 'font-style: italic;' },
+        { pattern: /\|([^|]*)\|/g, style: 'font-weight: bold;' },
+        { pattern: /-([^-]*)-/g, style: 'text-decoration: line-through;' }
     ];
-  
+
     const lines = text.split("\n");
     lines.forEach(line => {
-      const lineElement = document.createElement("div");
-      for (const rule of formattingRules) {
-        line = line.replace(rule.pattern, `<span style="${rule.style}">$1</span>`);
-      }
-      lineElement.innerHTML = line;
-      pElement.appendChild(lineElement);
-    });
-  
-    messageElement.appendChild(pElement);
-  
-    if (className === "sent") {
-      const createButton = (src, alt) => {
-        const button = document.createElement("img");
-        button.src = src;
-        button.classList.add("delete-button");
-        button.style.width = "20px";
-        button.style.height = "20px";
-        button.alt = alt;
-        return button;
-      };
-  
-      const deleteButton = createButton("img/bin.png", "Delete Message");
-      deleteButton.addEventListener("click", () => {
-        messageElement.remove();
-      });
-      userInfoDiv.appendChild(deleteButton);
-  
-      const editButton = createButton("img/pen.png", "Edit Message");
-      const editElement = document.createElement("div");
-      editElement.classList.add("editElement");
-      editElement.style.display = "none";
-      editElement.style.flex = "1";
-      editButton.classList.add("edit-button")
-      editButton.addEventListener("click", () => {
-        editElement.style.display = editElement.style.display === "flex" ? "none" : "flex";
-        if (editElement.style.display === "flex") {
-          editElement.innerHTML = pElement.innerHTML;
+        const lineElement = document.createElement("div");
+        for (const rule of formattingRules) {
+            line = line.replace(rule.pattern, `<span style="${rule.style}">$1</span>`);
         }
-      });
-      userInfoDiv.appendChild(editButton);
-      messageElement.appendChild(editElement);
+        lineElement.innerHTML = line;
+        pElement.appendChild(lineElement);
+    });
+
+    messageElement.appendChild(pElement);
+
+    if (className === "sent") {
+        const createButton = (src, alt) => {
+            const button = document.createElement("img");
+            button.src = src;
+            button.classList.add("delete-button");
+            button.style.width = "20px";
+            button.style.height = "20px";
+            button.alt = alt;
+            return button;
+        };
+
+        const deleteButton = createButton("img/bin.png", "Delete Message");
+        deleteButton.addEventListener("click", () => {
+            messageElement.remove();
+        });
+        userInfoDiv.appendChild(deleteButton);
+
+        const editButton = createButton("img/pen.png", "Edit Message");
+        const editElement = document.createElement("div");
+        editElement.classList.add("editElement");
+        editElement.style.display = "none";
+        editElement.style.flex = "1";
+        editButton.classList.add("edit-button");
+
+        const textarea = document.createElement("textarea");
+        textarea.style.width = "100%";
+        textarea.style.height = "100px"; // Adjust the height as needed
+        editElement.appendChild(textarea);
+
+        editButton.addEventListener("click", () => {
+            editElement.style.display = editElement.style.display === "flex" ? "none" : "flex";
+            if (editElement.style.display === "flex") {
+                textarea.value = pElement.innerText; // Set the value of the textarea
+            } else {
+                pElement.innerHTML = textarea.value; // Update the message with the edited content
+            }
+            pElement.style.display = editElement.style.display === "flex" ? "none" : "block";
+        });
+
+        userInfoDiv.appendChild(editButton);
+        messageElement.appendChild(editElement);
     }
-  
+
     return messageElement;
-  }
+}
   
   function scrollToBottom() {
     messageContainer.scrollTop = messageContainer.scrollHeight;
