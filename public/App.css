@@ -545,6 +545,10 @@ button#toggle-sidebar img {
   width: 25px;
 }
 
+#fileButton input {
+  display: none;
+}
+
 #micButton {
   padding: 8px 2px;
   background-color: transparent;
@@ -572,6 +576,26 @@ button#toggle-sidebar img {
 #hamburgerButton img {
   height: 22px;
   width: 22px;
+}
+
+.messageFile {
+  display: none;
+  position: absolute;
+  height: 16%;
+  width: 16%;
+  bottom: 11%;
+  left: 21%;
+  border-radius: 2%;
+  background-color: var(--hamburger-menu-color);
+  z-index: 2;
+}
+
+.messageFile.active {
+  display: flex;
+}
+
+.messageFile img {
+  height: 90%;
 }
 
 

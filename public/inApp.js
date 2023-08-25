@@ -28,6 +28,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const imgElement = document.getElementById("AvatarPreview");
   const botAvatarFileInput = document.getElementById("botAvatarFile");
   const botImgElement = document.getElementById("BotAvatarPreview");
+  const fileMessage = document.getElementById("fileUpload");
+  const filePreview = document.getElementById("filePreview");
+  const fileTab = document.getElementsByClassName("messageFile");
 
   function uploadBotAvatar(event) {
     const file = event.target.files[0];
@@ -43,6 +46,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Attach the event listener to the bot's avatar file input
   botAvatarFileInput.addEventListener("change", uploadBotAvatar);
+
+  function uploadFileMessage(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            filePreview.src = e.target.result; // Update the preview image
+            
+            // Add "active" class to fileTab
+            if (!fileTab[0].classList.contains("active")) {
+                fileTab[0].classList.add("active");
+            }
+        };
+        reader.readAsDataURL(file);
+    }
+  }
+
+  // Attach the event listener to the file input
+  fileMessage.addEventListener("change", uploadFileMessage);
 
 
   function uploadFile(event) {
@@ -270,46 +292,61 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
   
-
   async function sendToCustomAPI(messageText) {
     try {
       const request = {
         prompt: messageText,
       };
-
-      const response = await fetch("/api/v1/generate", {
+  
+      const response = await fetch("http://localhost:7000/api/v1/generate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(request),
       });
-
+  
       if (!response.ok) {
         throw new Error("Request failed with status: " + response.status);
       }
-
+  
       const responseBody = await response.json();
       return responseBody.text;
     } catch (error) {
       throw error;
     }
-  }
+  }  
 
   function sendMessage() {
     const messageText = inputElement.value.trim();
-  
+    const fileSelected = filePreview.src && filePreview.src !== "" && filePreview.src !== "about:blank";
+
     if (messageText !== "") {
-      const className = "sent";
-      const userAvatar = userAvatarElement.src; // Use the updated user avatar URL
-      const messageElement = createMessageElement(messageText, className, userAvatar, userDisplayName);
-      messageContainer.appendChild(messageElement);
-      inputElement.value = "";
-      adjustInputHeight();
-      handleBotReply(messageText);
+        const className = "sent";
+        const userAvatar = userAvatarElement.src;
+        const messageElement = createMessageElement(messageText, className, userAvatar, userDisplayName);
+
+        if (fileSelected) {
+            const imageTag = document.createElement("img");
+            imageTag.src = filePreview.src;
+            imageTag.id = "sentImage";
+            messageElement.appendChild(imageTag);
+        }
+
+        messageContainer.appendChild(messageElement);
+
+        // Clear the file input and preview after sending
+        fileMessage.value = null;
+        filePreview.src = "img/Empty.png";
+        
+        // Remove the "active" class from fileTab
+        fileTab[0].classList.remove('active');
+
+        inputElement.value = "";
+        adjustInputHeight();
+        handleBotReply(messageText);
     }
   }
-  
 
   function createMessageElement(text, className, avatarSrc, username) {
     const messageElement = document.createElement("div");
