@@ -31,6 +31,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const fileMessage = document.getElementById("fileUpload");
   const filePreview = document.getElementById("filePreview");
   const fileTab = document.getElementsByClassName("messageFile");
+  const callTab = document.getElementsByClassName("Call");
+  const callButton = document.getElementById("callButton");
 
   function uploadBotAvatar(event) {
     const file = event.target.files[0];
@@ -150,6 +152,10 @@ document.addEventListener("DOMContentLoaded", function () {
   closeSettings.addEventListener('click', function () {
     settingsTab.classList.toggle('active');
   });
+
+  callButton.addEventListener('click', function () {
+    callTab.classList.toggle('active');
+  })
 
   document.addEventListener('keydown', function (event) {
     const inputElements = Array.from(document.getElementsByTagName('input'));
@@ -298,7 +304,7 @@ document.addEventListener("DOMContentLoaded", function () {
         prompt: messageText,
       };
   
-      const response = await fetch("http://localhost:7000/api/v1/generate", {
+      const response = await fetch("http://localhost:9080/api/v1/generate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -295,6 +295,36 @@ button#toggle-sidebar img {
   width: 95%;
 }
 
+.Call {
+  display: flex;
+  position: absolute;
+  background-color: var(--background);
+  top: 0%;
+  height: 100%;
+  width: 67%;
+  left: 17.5%;
+  z-index: 0;
+}
+
+.Call.active {
+  display: flex;
+}
+
+.Audio {
+  display: none;
+  background-color: var(--hamburger-menu-color);
+  margin-left: 10%;
+  height: 100%;
+  width: 80%;
+}
+
+.Video {
+  display: none;
+  background-color: var(--hamburger-menu-color);
+  margin-left: 10%;
+  height: 100%;
+  width: 80%;
+}
 
 #sendButton {
   padding: 10px 20px;
@@ -598,6 +628,10 @@ button#toggle-sidebar img {
   height: 90%;
 }
 
+#sentImage {
+  max-width: 150px;
+}
+
 
 .sidebar button {
   display: flex;
@@ -625,7 +659,7 @@ button#toggle-sidebar img {
   position: relative;
   cursor: pointer;
   right: -930%;
-  margin-top: -50%;
+  margin-top: -40%;
   padding: -2%;
   opacity: 0;
   transition: opacity 0.2s;
@@ -642,7 +676,7 @@ button#toggle-sidebar img {
   cursor: pointer;
   right: -930%;
   padding: 2%;
-  margin-top: -50%;
+  margin-top: -60%;
   opacity: 0;
   transition: opacity 0.2s;
 }
@@ -661,6 +695,11 @@ button#toggle-sidebar img {
   margin-top: 5%;
   position: relative;
   z-index: 0;
+}
+
+.editElement textarea {
+  min-height: 1%;
+  max-height: none;
 }
 
 textarea {
@@ -1435,22 +1474,22 @@ textarea::-webkit-scrollbar-thumb:active {
   position: fixed;
   background-color: #1b002b;
   color: #ffffff;
-  top: 100%;
-  left: 120.5%;
+  top: 89%;
+  left: 21.5%;
   height: 1%;
-  width: 90%;
+  width: 14%;
   border-radius: 8%;
   transition: height 0.3s ease-out, top 0.3s ease-out;
-  z-index: 0;
+  z-index: 1;
 }
 
 .hamburgerMenu.active {
   height: 56%;
-  top: 50%;
+  top: 52%;
 }
 
 .hamburgerMenu.push {
-  margin-left: 16%;
+  margin-left: 0%;
 }
 
 .hamburgerMenu button {

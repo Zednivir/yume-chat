@@ -1,14 +1,24 @@
 const express = require('express');
-const fetch = require('node-fetch'); // For making API requests
+const cors = require('cors');
 
 const app = express();
 
-const API_URL = 'https://fax-chinese-bbs-afternoon.trycloudflare.com/'; // Replace with the actual API URL you want to connect to
+// Use CORS middleware
+app.use(cors());
 
-// Define a route to proxy API requests
-app.get('/api', async (req, res) => {
+const API_URL = 'https://hungary-revision-sl-merchants.trycloudflare.com';
+
+app.use(express.json());
+
+app.all('/api/*', async (req, res) => {
   try {
-    const response = await fetch(API_URL);
+    const targetUrl = API_URL + req.url.replace('/api', ''); // Adjust the path if needed
+    const response = await fetch(targetUrl, {
+      method: req.method,
+      headers: req.headers,
+      body: JSON.stringify(req.body),
+    });
+
     const data = await response.json();
     res.json(data);
   } catch (error) {
@@ -17,7 +27,7 @@ app.get('/api', async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 7000;
+const PORT = process.env.PORT || 9080;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Proxy server is running on port ${PORT}`);
 });
