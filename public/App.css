@@ -295,6 +295,17 @@ button#toggle-sidebar img {
   width: 95%;
 }
 
+.Adjust {
+  display: flex;
+  position: absolute;
+  background-color: var(--background);
+  top: 0%;
+  height: 100%;
+  width: 67%;
+  left: 17.5%;
+  z-index: 0;
+}
+
 .Call {
   display: flex;
   position: absolute;
@@ -325,6 +336,51 @@ button#toggle-sidebar img {
   height: 100%;
   width: 80%;
 }
+
+.sideChat {
+  display: flex;
+  position: absolute;
+  background-color: var(--sidebar-color);
+  height: 95%;
+  width: 15%;
+  left: 185%;
+  border-radius: 5%;
+  transform: left 0.3s ease-in-out;
+}
+
+.sideChat.active {
+  left: 85%;
+}
+
+.timestamp {
+  position: absolute;
+  color: gray;
+}
+
+/* Style for sent message timestamps */
+.timestamp.sentDate {
+  width: 150%;
+  margin-top: 11%;
+  margin-left: 300%;
+}
+
+.timestamp.sentTime {
+  width: 150%;
+  margin-top: 11%;
+  margin-left: 565%;
+}
+
+/* Style for received message timestamps */
+.timestamp.receivedDate {
+  margin-top: 1%;
+  margin-left: 2%;
+}
+
+.timestamp.receivedTime {
+  margin-top: 1%;
+  margin-left: 15%;
+}
+
 
 #sendButton {
   padding: 10px 20px;
@@ -1499,6 +1555,7 @@ textarea::-webkit-scrollbar-thumb:active {
   background: none;
   transition: height 0.3s;
   margin-left: 14%;
+  cursor: pointer;
 }
 
 .hamburgerMenu button img {

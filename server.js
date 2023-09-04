@@ -1,33 +1,55 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+const fs = require('fs');
 const cors = require('cors');
 
 const app = express();
+app.use(bodyParser.json());
 
-// Use CORS middleware
-app.use(cors());
+const messagesFilePath = './public/chats/history.json';
 
-const API_URL = 'https://hungary-revision-sl-merchants.trycloudflare.com';
+app.use(cors({
+    origin: 'http://192.168.1.163:5500', // Replace with the actual origin of your frontend
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+  }));
 
-app.use(express.json());
+// Endpoint to save messages
+app.post('/save-message', (req, res) => {
+  const { message, className, userAvatar, botAvatar, botDisplayName } = req.body;
 
-app.all('/api/*', async (req, res) => {
-  try {
-    const targetUrl = API_URL + req.url.replace('/api', ''); // Adjust the path if needed
-    const response = await fetch(targetUrl, {
-      method: req.method,
-      headers: req.headers,
-      body: JSON.stringify(req.body),
+  fs.readFile(messagesFilePath, 'utf8', (err, data) => {
+    if (err) {
+      console.error('Error reading messages file:', err);
+      res.status(500).json({ error: 'Error reading messages file' });
+      return;
+    }
+
+    let messages = JSON.parse(data);
+    const timestamp = new Date().toISOString();
+    const newMessage = {
+      timestamp,
+      message,
+      className,
+      userAvatar,
+      botAvatar,
+      botDisplayName,
+    };
+    messages.push(newMessage);
+
+    fs.writeFile(messagesFilePath, JSON.stringify(messages, null, 2), (err) => {
+      if (err) {
+        console.error('Error writing messages file:', err);
+        res.status(500).json({ error: 'Error writing messages file' });
+        return;
+      }
+
+      res.status(200).json({ message: 'Message saved successfully' });
     });
-
-    const data = await response.json();
-    res.json(data);
-  } catch (error) {
-    console.error('Error fetching data from API:', error);
-    res.status(500).json({ error: 'An error occurred while fetching data from the API.' });
-  }
+  });
 });
 
-const PORT = process.env.PORT || 9080;
-app.listen(PORT, () => {
-  console.log(`Proxy server is running on port ${PORT}`);
+const port = 1212;
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });

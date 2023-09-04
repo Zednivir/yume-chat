@@ -278,10 +278,13 @@ document.addEventListener("DOMContentLoaded", function () {
   
       if (botReply) {
         const className = "received";
-        const botAvatar = botImgElement.src; // Use the updated bot avatar URL
+        const botAvatar = botImgElement.src;
         const messageElement = createMessageElement(botReply, className, botAvatar, botDisplayName);
         messageContainer.appendChild(messageElement);
         scrollToBottom();
+  
+        // Save the received message
+        // await saveMessageToServer(botReply, className, userAvatarElement.src, botAvatar, botDisplayName);
       }
     } catch (error) {
       console.error("Error sending request to the custom API:", error);
@@ -340,17 +343,40 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         messageContainer.appendChild(messageElement);
-
-        // Clear the file input and preview after sending
         fileMessage.value = null;
         filePreview.src = "img/Empty.png";
-        
-        // Remove the "active" class from fileTab
         fileTab[0].classList.remove('active');
-
         inputElement.value = "";
         adjustInputHeight();
-        handleBotReply(messageText);
+    
+        // Save the sent message
+        // saveMessageToServer(messageText, className, userAvatar, botImgElement.src, botDisplayName);
+    }
+  }
+
+  async function saveMessageToServer(message, className, userAvatar, botAvatar, botDisplayName) {
+    try {
+      const response = await fetch('http://localhost:1212/save-message', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message,
+          className,
+          userAvatar,
+          botAvatar,
+          botDisplayName,
+        }),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to save message');
+      }
+  
+      console.log('Message saved successfully');
+    } catch (error) {
+      console.error('Error saving message:', error);
     }
   }
 
@@ -374,6 +400,30 @@ document.addEventListener("DOMContentLoaded", function () {
     userInfoDiv.appendChild(usernameText);
 
     messageElement.appendChild(userInfoDiv);
+
+    // Create timestamp element for date
+    const dateTimestamp = document.createElement("span");
+    dateTimestamp.classList.add("timestamp", className === "sent" ? "sentDate" : "receivedDate");
+    const currentDate = new Date();
+    const options = { year: 'numeric', month: 'short', day: 'numeric' };
+    dateTimestamp.textContent = currentDate.toLocaleDateString(undefined, options);
+    
+    // Create timestamp element for time with AM/PM
+    const timeTimestamp = document.createElement("span");
+    timeTimestamp.classList.add("timestamp", className === "sent" ? "sentTime" : "receivedTime");
+    const timeOptions = { hour: 'numeric', minute: '2-digit', hour12: true };
+    timeTimestamp.textContent = currentDate.toLocaleTimeString(undefined, timeOptions);
+
+    // Inside the loop that creates message elements
+    if (className === "sent") {
+      // For sent messages (user)
+      userInfoDiv.appendChild(dateTimestamp);
+      userInfoDiv.appendChild(timeTimestamp);
+    } else {
+      // For received messages (bot)
+      userInfoDiv.appendChild(dateTimestamp);
+      userInfoDiv.appendChild(timeTimestamp);
+    }
 
     const pElement = document.createElement("p");
 
