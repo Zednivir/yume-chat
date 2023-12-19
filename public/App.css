@@ -1,1594 +1,1620 @@
 body {
-  top: 0;
+    top: 0;
 }
 
 :root {
-  --true-background-color: #10001b;
-  --background: #13001f;
-  --sidebar-color: #2c0046;
-  --primary-color: #38005e;
-  --secondary-color: #25003b;
-  --user-color: #f0a12a;
-  --button-color: #5e0075;
-  --button-hover-color: #6e0085;
-  --hamburger-menu-color: #1b002b;
-  --text-color: #ffffff;
+    --true-background-color: #10001b;
+    --background: #13001f;
+    --sidebar-color: #2c0046;
+    --primary-color: #38005e;
+    --secondary-color: #25003b;
+    --user-color: #f0a12a;
+    --button-color: #5e0075;
+    --button-hover-color: #6e0085;
+    --hamburger-menu-color: #1b002b;
+    --text-color: #ffffff;
 }
 
 body {
-  background-color: var(--true-background-color);
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  z-index: 0;
+    background-color: var(--true-background-color);
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    z-index: 0;
 }
 
 header {
-  background-color: var(--true-background-color);
+    background-color: var(--true-background-color);
 }
 
 .header {
-  position: fixed;
-  background-color: #38005e;
-  color: rgb(255, 255, 255);
-  padding: 18px;
-  width: 65%;
-  margin-left: 17%;
-  z-index: 10;
+    position: fixed;
+    background-color: #38005e;
+    color: rgb(255, 255, 255);
+    padding: 18px;
+    width: 65%;
+    margin-left: 17%;
+    z-index: 10;
 }
 
 .bg {
-  position: absolute;
-  background-color: var(--true-background-color);
-  width: 100%;
-  height: 100%;
-  z-index: -1;
+    position: absolute;
+    background-color: var(--true-background-color);
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }
 
-
 button#toggle-sidebar {
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  position: absolute;
-  top: 0.001%;
-  right: 0.001%;
-  background-color: #38005e;
-  top: 10px;
-  right: 10px;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    position: absolute;
+    top: 0.001%;
+    right: 0.001%;
+    background-color: #38005e;
+    top: 10px;
+    right: 10px;
 }
 
 h1 {
-  font-size: 1.5rem;
-  margin: 0;
-  font-family: 'Noto Sans Regular', sans-serif;
+    font-size: 1.5rem;
+    margin: 0;
+    font-family: 'Noto Sans Regular', sans-serif;
 }
 
-html{
-  height: 100%;
+html {
+    height: 100%;
 }
 
 main {
-  height: 100%;
-  background-color: var(--true-background-color);
-  height: calc(100vh - 60px);
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 15px;
-  font-family: 'Noto Sans Regular', sans-serif;
+    height: 100%;
+    background-color: var(--true-background-color);
+    height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px;
+    font-family: 'Noto Sans Regular', sans-serif;
 }
 
 button {
-  font-family: 'Noto Sans Regular', sans-serif;
+    font-family: 'Noto Sans Regular', sans-serif;
 }
 
-
 .sidebar.active {
-  transform: translateX(0%);
+    transform: translateX(0%);
 }
 
 button#toggle-sidebar {
-  padding: 5px;
-  width: 40px;
-  height: 40px;
+    padding: 5px;
+    width: 40px;
+    height: 40px;
 }
 
 button#toggle-sidebar img {
-  width: 115%;
-  height: 115%;
+    width: 115%;
+    height: 115%;
 }
 
 .chat-container {
-  background-color: var(--background);
-  margin-top: 0.41%;
-  height: 110%;
-  max-width: 65%;
-  margin-left: 17.5%;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+    background-color: var(--background);
+    margin-top: 0.41%;
+    height: 110%;
+    max-width: 65%;
+    margin-left: 17.5%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .Logo {
-  left: 0;
+    left: 0;
 }
 
 .header h1 {
-  margin-left: 3%;
+    margin-left: 3%;
 }
 
 .Logo {
-  position: absolute;
-  margin-top: -10%;
-  left: 1%;
-  top: 22%;
-  height: auto;
-  width: 3%;
+    position: absolute;
+    margin-top: -10%;
+    left: 1%;
+    top: 22%;
+    height: auto;
+    width: 3%;
 }
 
 .message-container {
-  flex: 1;
-  padding: 15px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  height: 0;
-  transition: width 0.3s ease-out, margin-left 0.3s ease-out;
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    height: 0;
+    transition: width 0.3s ease-out, margin-left 0.3s ease-out;
 }
 
 .message-container.active {
-  flex: 1;
+    flex: 1;
 }
 
 .welcome {
-  align-content: center;
-  color: white;
-  height: 15%;
-  width: auto;
-  margin-left: 25%;
-  font-size: 200%;
-  margin-top: 10%;
+    align-content: center;
+    color: white;
+    height: 15%;
+    width: auto;
+    margin-left: 25%;
+    font-size: 200%;
+    margin-top: 10%;
 }
 
 #videoButton {
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  position: absolute;
-  width: 5%;
-  height: 65%;
-  margin-left: 82%;
-  background-color: #38005e;
-  top: 10px;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    position: absolute;
+    width: 5%;
+    height: 65%;
+    margin-left: 82%;
+    background-color: #38005e;
+    top: 10px;
 }
 
 #videoButton img {
-  width: 85%;
-  height: 85%;
+    width: 85%;
+    height: 85%;
 }
 
 #callButton {
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  position: absolute;
-  width: 5%;
-  height: 65%;
-  margin-left: 87%;
-  background-color: #38005e;
-  top: 10px;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    position: absolute;
+    width: 5%;
+    height: 65%;
+    margin-left: 87%;
+    background-color: #38005e;
+    top: 10px;
 }
 
 #callButton img {
-  width: 85%;
-  height: 85%;
+    width: 85%;
+    height: 85%;
 }
 
+
 /* Style for the username in messages */
+
 .message {
-  left:0%
+    left: 0%
 }
 
 .user-info {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  width: 80px;
-  bottom: 40px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 80px;
+    bottom: 40px;
 }
 
 .user-info .avatar {
-  position: relative;
+    position: relative;
 }
 
 .message {
-  left:0%
+    left: 0%
 }
 
+
 /* Add spacing between avatar and username */
-.user-info .avatar + #message-username {
-  margin-left: 10px;
+
+.user-info .avatar+#message-username {
+    margin-left: 10px;
 }
+
 
 /* Style for sent messages */
 
 .message.received .user-info {
-  position: relative;
+    position: relative;
 }
 
 .message.received .avatar {
-  position: relative;
-  left: 2%;
+    position: relative;
+    left: 2%;
 }
 
 .message.received .avatar {
-  position: relative;
-  left: 0%;
-  margin-top: 0%;
+    position: relative;
+    left: 0%;
+    margin-top: 0%;
 }
 
 .message.received #message-username {
-  position: absolute;
-  font-weight: bold;
-  color: #ffffff;
-  margin-top: 1%;
-  margin-left: -4%;
+    position: absolute;
+    font-weight: bold;
+    color: #ffffff;
+    margin-top: 1%;
+    margin-left: -4%;
 }
 
 .message.sent .user-info {
-  position: relative;
-  height: -2%;
-  top: 1%;
-  left: -2%;
+    position: relative;
+    height: -2%;
+    top: 1%;
+    left: -2%;
 }
 
 .message.sent .avatar {
-  position: relative;
-  left: -18%;
-  margin: 5%;
+    position: relative;
+    left: -18%;
+    margin: 5%;
 }
 
 .message.sent #message-username {
-  position: relative;
-  font-weight: bold;
-  color: #ffffff;
-  margin-top: -50%;
-  margin-bottom: 35%;
-  margin-left: 130%;
-  min-width: 100%;
-  height: 50%;
+    position: relative;
+    font-weight: bold;
+    color: #ffffff;
+    margin-top: -50%;
+    margin-bottom: 35%;
+    margin-left: 130%;
+    min-width: 100%;
+    height: 50%;
 }
 
 .message {
-  margin-bottom: 8%;
-  padding: 20%;
-  border-radius: 32%;
-  max-width: 40%;
-  word-wrap: break-word;
-  white-space: pre-wrap;
-  overflow-wrap: break-word;
-  display: inline-block;
-  box-sizing: border-box;
-  word-break: break-word;
-  overflow: hidden;
-  text-overflow: ellipsis; 
-  flex-shrink: 0; 
-  transition: width 0.3s ease-out, margin-left 0.3s ease-out;
+    margin-bottom: 8%;
+    padding: 20%;
+    border-radius: 32%;
+    max-width: 40%;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    display: inline-block;
+    box-sizing: border-box;
+    word-break: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-shrink: 0;
+    transition: width 0.3s ease-out, margin-left 0.3s ease-out;
 }
 
-
-
 .input-container {
-  display: flex;
-  align-items: center;
-  padding: 13px;
-  border-radius: 20px;
-  background-color: #38005e;
-  margin-left: 15px;
-  margin-bottom: 23px;
-  flex-wrap: wrap;
-  overflow: hidden;
-  transition: width 0.3s ease-out, margin-left 0.3s ease-out;
-  width: 95%;
+    display: flex;
+    align-items: center;
+    padding: 13px;
+    border-radius: 20px;
+    background-color: #38005e;
+    margin-left: 15px;
+    margin-bottom: 23px;
+    flex-wrap: wrap;
+    overflow: hidden;
+    transition: width 0.3s ease-out, margin-left 0.3s ease-out;
+    width: 95%;
 }
 
 .Adjust {
-  display: flex;
-  position: absolute;
-  background-color: var(--background);
-  top: 0%;
-  height: 100%;
-  width: 67%;
-  left: 17.5%;
-  z-index: 0;
+    display: flex;
+    position: absolute;
+    background-color: var(--background);
+    top: 0%;
+    height: 100%;
+    width: 67%;
+    left: 17.5%;
+    z-index: 0;
 }
 
 .Call {
-  display: flex;
-  position: absolute;
-  background-color: var(--background);
-  top: 0%;
-  height: 100%;
-  width: 67%;
-  left: 17.5%;
-  z-index: 0;
+    display: flex;
+    position: absolute;
+    background-color: var(--background);
+    top: 0%;
+    height: 100%;
+    width: 67%;
+    left: 17.5%;
+    z-index: 0;
 }
 
 .Call.active {
-  display: flex;
+    display: flex;
 }
 
 .Audio {
-  display: none;
-  background-color: var(--hamburger-menu-color);
-  margin-left: 10%;
-  height: 100%;
-  width: 80%;
+    display: none;
+    background-color: var(--hamburger-menu-color);
+    margin-left: 10%;
+    height: 100%;
+    width: 80%;
 }
 
 .Video {
-  display: none;
-  background-color: var(--hamburger-menu-color);
-  margin-left: 10%;
-  height: 100%;
-  width: 80%;
+    display: none;
+    background-color: var(--hamburger-menu-color);
+    margin-left: 10%;
+    height: 100%;
+    width: 80%;
 }
 
 .sideChat {
-  display: flex;
-  position: absolute;
-  background-color: var(--sidebar-color);
-  height: 95%;
-  width: 15%;
-  left: 185%;
-  border-radius: 5%;
-  transform: left 0.3s ease-in-out;
+    display: flex;
+    position: absolute;
+    background-color: var(--sidebar-color);
+    height: 95%;
+    width: 15%;
+    left: 185%;
+    border-radius: 5%;
+    transform: left 0.3s ease-in-out;
 }
 
 .sideChat.active {
-  left: 85%;
+    left: 85%;
 }
 
 .timestamp {
-  position: absolute;
-  color: gray;
+    position: absolute;
+    color: gray;
 }
 
+
 /* Style for sent message timestamps */
+
 .timestamp.sentDate {
-  width: 150%;
-  margin-top: 11%;
-  margin-left: 300%;
+    width: 150%;
+    margin-top: 11%;
+    margin-left: 300%;
 }
 
 .timestamp.sentTime {
-  width: 150%;
-  margin-top: 11%;
-  margin-left: 565%;
+    width: 150%;
+    margin-top: 11%;
+    margin-left: 565%;
 }
 
+
 /* Style for received message timestamps */
+
 .timestamp.receivedDate {
-  margin-top: 1%;
-  margin-left: 2%;
+    margin-top: 1%;
+    margin-left: 2%;
 }
 
 .timestamp.receivedTime {
-  margin-top: 1%;
-  margin-left: 15%;
+    margin-top: 1%;
+    margin-left: 15%;
 }
 
-
 #sendButton {
-  padding: 10px 20px;
-  background-color: #5e007500;
-  border: none;
-  cursor: pointer;
-  white-space: nowrap;
-  margin-right: 0px;
+    padding: 10px 20px;
+    background-color: #5e007500;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    margin-right: 0px;
 }
 
 #sendButton img {
-  height: 22px;
-  width: 22px;
+    height: 22px;
+    width: 22px;
 }
 
 .sidebar button {
-  cursor: pointer;
-  background-color: transparent;
-  border: none; 
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
 }
 
 .sidebar button img {
-  height: 70px;
-  width: 70px;
-  margin-right: 5px;
+    height: 70px;
+    width: 70px;
+    margin-right: 5px;
 }
 
-
 .header .toggle-sidebar img {
-  width: 55px;
-  height: 55px;
-  height: auto;
+    width: 55px;
+    height: 55px;
+    height: auto;
 }
 
 button#toggle-sidebar {
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  position: absolute;
-  top: 0.001%;
-  right: 0.001%;
-  background-color: #38005e;
-  top: 10px;
-  right: 10px;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    position: absolute;
+    top: 0.001%;
+    right: 0.001%;
+    background-color: #38005e;
+    top: 10px;
+    right: 10px;
 }
 
 button#toggle-sidebar img {
-  width: 3px;
-  height: 3px;
+    width: 3px;
+    height: 3px;
 }
 
 h1 {
-  font-size: 1.5rem;
-  margin: 0;
-  font-family: 'Noto Sans Regular', sans-serif;
+    font-size: 1.5rem;
+    margin: 0;
+    font-family: 'Noto Sans Regular', sans-serif;
 }
 
-html{
-  height: 100%;
+html {
+    height: 100%;
 }
 
 button {
-  font-family: 'Noto Sans Regular', sans-serif;
+    font-family: 'Noto Sans Regular', sans-serif;
 }
 
 .sidebar {
-  background-color: #2c0046;
-  color: #ffffff;
-  width: 211px;
-  height: 92%;
-  bottom: 6.8%;
-  border-radius: 20px;
-  position: fixed;
-  transition: transform 0.3s ease-in-out;
-  transform: translateX(-107%);
-  z-index: 5;
+    background-color: #2c0046;
+    color: #ffffff;
+    width: 211px;
+    height: 92%;
+    bottom: 6.8%;
+    border-radius: 20px;
+    position: fixed;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(-107%);
+    z-index: 5;
 }
 
 .sidebar.active {
-  transform: translateX(-7%);
+    transform: translateX(-7%);
 }
 
 button#toggle-sidebar {
-  padding: 5px;
-  width: 40px;
-  height: 40px;
+    padding: 5px;
+    width: 40px;
+    height: 40px;
 }
 
 button#toggle-sidebar img {
-  width: 115%;
-  height: 115%;
+    width: 115%;
+    height: 115%;
 }
 
 .chat-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .message-container {
-  flex: 1;
-  padding: 15px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
-  scrollbar-width: thin;
-  scrollbar-color: #25003b #13001f;
-  height: 0;
-  transition: width 0.3s ease-out, margin-left 0.3s ease-out;
-  position: relative;
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    scrollbar-width: thin;
+    scrollbar-color: #25003b #13001f;
+    height: 0;
+    transition: width 0.3s ease-out, margin-left 0.3s ease-out;
+    position: relative;
 }
 
 .message-container.active {
-  flex: 1;
+    flex: 1;
 }
 
 .message-container::-webkit-scrollbar {
-  width: auto;
+    width: auto;
 }
 
 .message-container::-webkit-scrollbar-track {
-  background-color: #13001f;
+    background-color: #13001f;
 }
 
 .message-container::-webkit-scrollbar-thumb {
-  background-color: #25003b;
-  border-radius: 4px;
+    background-color: #25003b;
+    border-radius: 4px;
 }
 
 .message-container::-webkit-scrollbar-thumb:hover {
-  background-color: #1f0031;
+    background-color: #1f0031;
 }
 
 .message-container::-webkit-scrollbar-thumb:active {
-  background-color: #1b002b;
+    background-color: #1b002b;
 }
 
 .user-info {
-  top: 105%;
-  left: 100%;
-  margin-left: 10px;
+    top: 105%;
+    left: 100%;
+    margin-left: 10px;
 }
 
 .avatar {
-  position: absolute;
-  bottom: 90%;
-  margin-top: -75%;
-  border-radius: 50%;
-  margin-right: 40px;
-  background-color: transparent;
-  border: none;
+    position: absolute;
+    bottom: 90%;
+    margin-top: -75%;
+    border-radius: 50%;
+    margin-right: 40px;
+    background-color: transparent;
+    border: none;
 }
 
 .avatar {
-  top: 0;
+    top: 0;
 }
 
 .message {
-  margin-bottom: 10px;
-  padding: 10px;
-  display: flex;
-  position: relative;
-  border-radius: 4px;
-  top: 70%;
-  word-wrap: break-word;
-  white-space: pre-wrap;
-  overflow-wrap: break-word;
-  display: inline-block;
-  box-sizing: border-box;
-  word-break: break-word;
-  overflow: visible;
-  text-overflow: ellipsis; 
-  flex-shrink: 0; 
-  transition: width 0.3s ease-out, margin-left 0.3s ease-out;
+    margin-bottom: 10px;
+    padding: 10px;
+    display: flex;
+    position: relative;
+    border-radius: 4px;
+    top: 70%;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    display: inline-block;
+    box-sizing: border-box;
+    word-break: break-word;
+    overflow: visible;
+    text-overflow: ellipsis;
+    flex-shrink: 0;
+    transition: width 0.3s ease-out, margin-left 0.3s ease-out;
 }
 
-
 .sent {
-  background-color: var(--hamburger-menu-color);
-  color: #ffffff;
-  text-align: left;
-  min-height: 20%;
-  min-width: 98%;
-  position: relative;
-  z-index: 0;
+    background-color: var(--hamburger-menu-color);
+    color: #ffffff;
+    text-align: left;
+    min-height: 20%;
+    min-width: 98%;
+    position: relative;
+    z-index: 0;
 }
 
 .sent p {
-  display: inherit;
-  margin-top: 7%;
+    display: inherit;
+    margin-top: 7%;
 }
 
 .received {
-  background-color: var(--button-color);
-  color: #ffffff;
-  text-align: left;
-  min-width: 98%;
-  position: relative;
-  z-index: 0;
+    background-color: var(--button-color);
+    color: #ffffff;
+    text-align: left;
+    min-width: 98%;
+    position: relative;
+    z-index: 0;
 }
 
 .input-container {
-  display: flex;
-  align-items: center;
-  padding: 13px;
-  border-radius: 20px;
-  background-color: #38005e;
-  margin-left: 15px;
-  margin-bottom: 23px;
-  flex-wrap: wrap;
-  overflow: hidden;
-  transition: width 0.3s ease-out, margin-left 0.3s ease-out;
-  width: 95%;
-  max-height: 8%;
-  z-index: 5;
+    display: flex;
+    align-items: center;
+    padding: 13px;
+    border-radius: 20px;
+    background-color: #38005e;
+    margin-left: 15px;
+    margin-bottom: 23px;
+    flex-wrap: wrap;
+    overflow: hidden;
+    transition: width 0.3s ease-out, margin-left 0.3s ease-out;
+    width: 95%;
+    max-height: 8%;
+    z-index: 5;
 }
 
 #sendButton {
-  padding: 1px 8px;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  white-space: nowrap;
+    padding: 1px 8px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
 }
 
 #sendButton img {
-  height: 25px;
-  width: 25px;
+    height: 25px;
+    width: 25px;
 }
 
 #fileButton {
-  left: 0;
+    left: 0;
 }
 
 #fileButton {
-  padding: 8px 8px;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  white-space: nowrap;
-  margin-right: 0px;
+    padding: 8px 8px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    margin-right: 0px;
 }
 
 #fileButton img {
-  height: 25px;
-  width: 25px;
+    height: 25px;
+    width: 25px;
 }
 
 #fileButton input {
-  display: none;
+    display: none;
 }
 
 #micButton {
-  padding: 8px 2px;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  white-space: nowrap;
-  margin-right: 0px;
+    padding: 8px 2px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    margin-right: 0px;
 }
 
 #micButton img {
-  height: 26px;
-  width: 26px;
+    height: 26px;
+    width: 26px;
 }
 
 #hamburgerButton {
-  padding: 1px 2px;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  white-space: nowrap;
-  margin-left: 10px;
-  margin-right: 10px;
+    padding: 1px 2px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 #hamburgerButton img {
-  height: 22px;
-  width: 22px;
+    height: 22px;
+    width: 22px;
 }
 
 .messageFile {
-  display: none;
-  position: absolute;
-  height: 16%;
-  width: 16%;
-  bottom: 11%;
-  left: 21%;
-  border-radius: 2%;
-  background-color: var(--hamburger-menu-color);
-  z-index: 2;
+    display: none;
+    position: absolute;
+    height: 16%;
+    width: 16%;
+    bottom: 11%;
+    left: 21%;
+    border-radius: 20%;
+    background-color: var(--sidebar-color);
+    z-index: 2;
 }
 
 .messageFile.active {
-  display: flex;
+    display: flex;
 }
 
 .messageFile img {
-  height: 90%;
+    height: 90%;
 }
 
 #sentImage {
-  max-width: 150px;
+    max-width: 20%;
+    margin-left: 2%;
+    border-color: black;
+    border-radius: 5%;
 }
 
-
 .sidebar button {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
 }
 
 .sidebar button img {
-  width: 77px;
-  height: 77px;
-  margin-right: 5px;
+    width: 77px;
+    height: 77px;
+    margin-right: 5px;
 }
 
 .sidebar .button-text {
-  color: #ffffff;
-  align-self: flex-start;
-  font-size: 23px;
+    color: #ffffff;
+    align-self: flex-start;
+    font-size: 23px;
 }
 
+
 /* CSS for the delete button */
+
 .delete-button {
-  position: relative;
-  cursor: pointer;
-  right: -930%;
-  margin-top: -40%;
-  padding: -2%;
-  opacity: 0;
-  transition: opacity 0.2s;
+    position: relative;
+    cursor: pointer;
+    right: -930%;
+    margin-top: -40%;
+    padding: -2%;
+    opacity: 0;
+    transition: opacity 0.2s;
 }
 
+
 /* Show the delete button when hovering over a sent message */
+
 .message.sent:hover .delete-button {
-  opacity: 1;
+    opacity: 1;
 }
+
 
 /* CSS for the delete button */
+
 .edit-button {
-  position: relative;
-  cursor: pointer;
-  right: -930%;
-  padding: 2%;
-  margin-top: -60%;
-  opacity: 0;
-  transition: opacity 0.2s;
+    position: relative;
+    cursor: pointer;
+    right: -930%;
+    padding: 2%;
+    margin-top: -60%;
+    opacity: 0;
+    transition: opacity 0.2s;
 }
 
+
 /* Show the delete button when hovering over a sent message */
+
 .message.sent:hover .edit-button {
-  opacity: 1;
+    opacity: 1;
 }
 
 .editElement {
-  background-color: var(--hamburger-menu-color);
-  color: #ffffff;
-  text-align: left;
-  min-height: 20%;
-  min-width: 98%;
-  margin-top: 5%;
-  position: relative;
-  z-index: 0;
+    background-color: var(--hamburger-menu-color);
+    color: #ffffff;
+    text-align: left;
+    min-height: 20%;
+    min-width: 98%;
+    margin-top: 5%;
+    position: relative;
+    z-index: 0;
 }
 
 .editElement textarea {
-  min-height: 1%;
-  max-height: none;
+    min-height: 1%;
+    max-height: none;
 }
 
 textarea {
-  flex: 1;
-  padding: 9px;
-  border: none;
-  border-radius: 4px;
-  background-color: #13001f;
-  color: #fff;
-  margin-right: 10px;
-  resize: vertical;
-  overflow-y: auto;
-  font-family: 'Noto Sans Regular', sans-serif;
-  max-height: 60%;
+    flex: 1;
+    padding: 9px;
+    border: none;
+    border-radius: 4px;
+    background-color: #13001f;
+    color: #fff;
+    margin-right: 10px;
+    resize: vertical;
+    overflow-y: auto;
+    font-family: 'Noto Sans Regular', sans-serif;
+    max-height: 60%;
 }
 
 textarea::-webkit-scrollbar {
-  width: 15px;
+    width: 15px;
 }
 
 textarea::-webkit-scrollbar-track {
-  background-color: #13001f;
+    background-color: #13001f;
 }
 
 textarea::-webkit-scrollbar-thumb {
-  background-color: #25003b;
-  border-radius: 4px;
+    background-color: #25003b;
+    border-radius: 4px;
 }
 
 textarea::-webkit-scrollbar-thumb:hover {
-  background-color: #1f0031;
+    background-color: #1f0031;
 }
 
 textarea::-webkit-scrollbar-thumb:active {
-  background-color: #1b002b;
+    background-color: #1b002b;
 }
 
 .settingsTab {
-  position: fixed;
-  bottom: -100%;
-  left: 20%;
-  right: 0;
-  background-color: #25003b;
-  color: #ffffff;
-  height: 60%;
-  width: 50%;
-  padding: 20px;
-  border-radius: 20px;
-  transition: bottom 0.3s ease-in-out, margin-left 0.3s ease-in-out;
-  z-index: 2;
+    position: fixed;
+    bottom: -100%;
+    left: 20%;
+    right: 0;
+    background-color: #25003b;
+    color: #ffffff;
+    height: 60%;
+    width: 50%;
+    padding: 20px;
+    border-radius: 20px;
+    transition: bottom 0.3s ease-in-out, margin-left 0.3s ease-in-out;
+    z-index: 2;
 }
 
 .settingsTab.active {
-  bottom: 20%;
+    bottom: 20%;
 }
 
 .settingsTab.push {
-  margin-left: 10%;
+    margin-left: 10%;
 }
 
 .settingsTab.double {
-  margin-left: 10%;
+    margin-left: 10%;
 }
 
 .settingsTab.push.double {
-  margin-left: 20%;
+    margin-left: 20%;
 }
 
 .settingsTab-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: #38005e;
-  color: #ffffff;
-  padding: 10px;
-  border-radius: 20px 20px 0 0;
-  margin-bottom: 20px;
-  z-index: 3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #38005e;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 20px 20px 0 0;
+    margin-bottom: 20px;
+    z-index: 3;
 }
 
 .settingsTab-header h2 {
-  font-size: 1.5rem;
-  margin: 0;
-  font-family: 'Noto Sans Regular', sans-serif;
+    font-size: 1.5rem;
+    margin: 0;
+    font-family: 'Noto Sans Regular', sans-serif;
 }
 
 .settingsTab-header button {
-  width: 50px;
-  height: 50px;
-  margin-right: 5px;
-  background-color: transparent;
-  border: none;
-  position: absolute;
-  cursor: pointer;
-  top: 0px;
-  right: 0px;
+    width: 50px;
+    height: 50px;
+    margin-right: 5px;
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    cursor: pointer;
+    top: 0px;
+    right: 0px;
 }
 
 .settingsTab-header button img {
-  width: 42px;
-  height: 42px;
-  margin-right: 5px;
-  background-color: transparent;
-  border: none;
-  position: absolute;
-  cursor: pointer;
-  top: 3px;
-  right: 0px;
+    width: 42px;
+    height: 42px;
+    margin-right: 5px;
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    cursor: pointer;
+    top: 3px;
+    right: 0px;
 }
 
 .Settings {
-  position: absolute;
-  right: 87.3%;
-  bottom: 0%;
-  background-color: #2c0046;
-  color: #ffffff;
-  height: 80%;
-  width: 7%;
-  padding: 20px;
-  border-radius: 0px 0px 0px 20px;
-  transition: bottom 0.3s ease-in-out, margin-left 0.3s ease-in-out;
-  z-index: 2;
+    position: absolute;
+    right: 87.3%;
+    bottom: 0%;
+    background-color: #2c0046;
+    color: #ffffff;
+    height: 80%;
+    width: 7%;
+    padding: 20px;
+    border-radius: 0px 0px 0px 20px;
+    transition: bottom 0.3s ease-in-out, margin-left 0.3s ease-in-out;
+    z-index: 2;
 }
 
 #aiSettings {
-  right: 14px;
-  background-color: transparent;
-  border: none;
-  position: absolute;
-  cursor: pointer;
+    right: 14px;
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    cursor: pointer;
 }
 
 #aiSettings img {
-  width: 50px;
-  height: 50px;
+    width: 50px;
+    height: 50px;
 }
 
 #yumeSettings {
-  right: 14px;
-  top: 80px;
-  background-color: transparent;
-  border: none;
-  position: absolute;
-  cursor: pointer;
+    right: 14px;
+    top: 80px;
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    cursor: pointer;
 }
 
 #yumeSettings img {
-  width: 50px;
-  height: 50px;
+    width: 50px;
+    height: 50px;
 }
 
 #uiSettings {
-  right: 14px;
-  top: 140px;
-  background-color: transparent;
-  border: none;
-  position: absolute;
-  cursor: pointer;
+    right: 14px;
+    top: 140px;
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    cursor: pointer;
 }
 
 #uiSettings img {
-  width: 50px;
-  height: 50px;
+    width: 50px;
+    height: 50px;
 }
 
+
 /*AI tab*/
+
 .settingsTab {
-  margin: 0;
+    margin: 0;
 }
 
 .Temp {
-  margin: 30%;
+    margin: 30%;
 }
+
 
 /* Style for the slider track (blue) */
+
 .slider {
-  -webkit-appearance: none;
-  width: 50%;
-  height: 10px;
-  background: #13001f; /* Blue color */
-  outline: none;
-  opacity: 0.7;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
+    -webkit-appearance: none;
+    width: 50%;
+    height: 10px;
+    background: #13001f;
+    /* Blue color */
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
 }
 
+
 /* Style for the slider thumb (red) */
+
 .slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 10px;
-  height: 10px;
-  background:  #5e0075;
-  cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 10px;
+    height: 10px;
+    background: #5e0075;
+    cursor: pointer;
 }
 
 .slider::-webkit-slider-thumb:hover {
-  background: #6e0085; 
+    background: #6e0085;
 }
 
 
 /* Style for the number input value text (red) */
-.slider-value::-webkit-inner-spin-button, 
+
+.slider-value::-webkit-inner-spin-button,
 .slider-value::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 .slider-value[type=number] {
-  -moz-appearance: textfield;
+    -moz-appearance: textfield;
 }
 
 .slider-value {
-  width: 40px;
-  text-align: center;
-  background-color: #13001f;
-  color: #ffffff;
-  border: 10px;
+    width: 40px;
+    text-align: center;
+    background-color: #13001f;
+    color: #ffffff;
+    border: 10px;
 }
 
 .AISet {
-  display: flex;
-  position: absolute;
-  flex-direction: column;
-  height: 100%;
-  width: 50%;
-  left: 30%;
-  top: 20%;
-  margin-left: -16%;
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    height: 100%;
+    width: 50%;
+    left: 30%;
+    top: 20%;
+    margin-left: -16%;
 }
 
 .openAIKeySection {
-  display: flex;
-  position: absolute;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  left: 30%;
-  top: 0%;
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    left: 30%;
+    top: 0%;
 }
 
 .openAIKeySection.active {
-  display: none;
+    display: none;
 }
 
 .openAIKeySection h3 {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  color: #ffffff;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #ffffff;
 }
 
 .openAIKeySection input {
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
-  background-color: #13001f;
-  color: #fff;
-  margin-bottom: 5px;
-  width: 300px	;
-  max-width: 50%;
-  font-family: 'Noto Sans Regular', sans-serif;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #13001f;
+    color: #fff;
+    margin-bottom: 5px;
+    width: 300px;
+    max-width: 50%;
+    font-family: 'Noto Sans Regular', sans-serif;
 }
 
 .koboldKey textarea {
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
-  background-color: #13001f;
-  color: #fff;
-  margin-bottom: 5px;
-  width: 40%;
-  max-width: 50%;
-  max-height: 5%;
-  min-height: 5%;
-  font-family: 'Noto Sans Regular', sans-serif;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #13001f;
+    color: #fff;
+    margin-bottom: 5px;
+    width: 40%;
+    max-width: 50%;
+    max-height: 5%;
+    min-height: 5%;
+    font-family: 'Noto Sans Regular', sans-serif;
 }
 
 .openAIKeySection img {
-  width: 100px;
-  height: 100px;
-  bottom: 53%;
+    width: 100px;
+    height: 100px;
+    bottom: 53%;
 }
 
 .openAIKeySection label {
-  font-size: medium;
-  margin-bottom: 5%;
+    font-size: medium;
+    margin-bottom: 5%;
 }
 
-
 .openAIKeySection button {
-  padding: 10px 20px;
-  margin: 10px;
-  bottom: 20px;
-  background-color: #5e0075;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  white-space: nowrap;
-  font-size: 1rem;
-  color: #fff;
-  font-family: 'Noto Sans Regular', sans-serif;
+    padding: 10px 20px;
+    margin: 10px;
+    bottom: 20px;
+    background-color: #5e0075;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    font-size: 1rem;
+    color: #fff;
+    font-family: 'Noto Sans Regular', sans-serif;
 }
 
 .openAIKeySection button:hover {
-  background-color: #6e0085;
+    background-color: #6e0085;
 }
 
+
 /*Yume tab*/
+
 .yumeTab {
-  display: none;
-  background-color: #25003b;
-  position: absolute;
-  flex-direction: column;
-  height: 80%;
-  width: 50%;
-  left: 30%;
-  top: 20%;
-  margin-left: -16%;
+    display: none;
+    background-color: #25003b;
+    position: absolute;
+    flex-direction: column;
+    height: 80%;
+    width: 50%;
+    left: 30%;
+    top: 20%;
+    margin-left: -16%;
 }
 
 .yumeTab.active {
-  display: flex;
+    display: flex;
 }
 
 .yumeTab h3 {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  color: #ffffff;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #ffffff;
 }
 
 .yumeTab input {
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
-  background-color: #13001f;
-  color: #fff;
-  margin-bottom: 5px;
-  width: 300px;
-  max-width: 50%;
-  font-family: 'Noto Sans Regular', sans-serif;
-
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #13001f;
+    color: #fff;
+    margin-bottom: 5px;
+    width: 300px;
+    max-width: 50%;
+    font-family: 'Noto Sans Regular', sans-serif;
 }
 
 .yumeTab img {
-  width: 100px;
-  height: 100px;
-  bottom: 53%;
+    width: 100px;
+    height: 100px;
+    bottom: 53%;
 }
 
 .yumeTab label {
-  font-size: large;
-  margin-bottom: 5%;
+    font-size: large;
+    margin-bottom: 5%;
 }
 
-
 .yumeTab button {
-  padding: 10px 20px;
-  margin: 10px;
-  bottom: 20px;
-  background-color: #5e0075;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  white-space: nowrap;
-  font-size: 1rem;
-  color: #fff;
-  font-family: 'Noto Sans Regular', sans-serif;
+    padding: 10px 20px;
+    margin: 10px;
+    bottom: 20px;
+    background-color: #5e0075;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    font-size: 1rem;
+    color: #fff;
+    font-family: 'Noto Sans Regular', sans-serif;
 }
 
 .yumeTab button:hover {
-  background-color: #6e0085;
+    background-color: #6e0085;
 }
 
+
 /*UI tab*/
+
 .uiTab {
-  display: none;
-  background-color: #25003b;
-  position: absolute;
-  flex-direction: column;
-  height: 80%;
-  width: 50%;
-  left: 30%;
-  top: 20%;
-  margin-left: -16%;
+    display: none;
+    background-color: #25003b;
+    position: absolute;
+    flex-direction: column;
+    height: 80%;
+    width: 50%;
+    left: 30%;
+    top: 20%;
+    margin-left: -16%;
 }
 
 .uiTab.active {
-  display: flex;
+    display: flex;
 }
 
 .uiTab h3 {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  color: #ffffff;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #ffffff;
 }
 
 .uiTab input {
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
-  background-color: #13001f;
-  color: #fff;
-  margin-bottom: 5px;
-  width: 300px;
-  max-width: 50%;
-  font-family: 'Noto Sans Regular', sans-serif;
-
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #13001f;
+    color: #fff;
+    margin-bottom: 5px;
+    width: 300px;
+    max-width: 50%;
+    font-family: 'Noto Sans Regular', sans-serif;
 }
 
 .uiTab img {
-  width: 100px;
-  height: 100px;
-  bottom: 53%;
+    width: 100px;
+    height: 100px;
+    bottom: 53%;
 }
 
 .uiTab label {
-  font-size: medium;
-  margin-bottom: 5%;
+    font-size: medium;
+    margin-bottom: 5%;
 }
 
-
 .uiTab button {
-  padding: 10px 20px;
-  margin: 10px;
-  bottom: 20px;
-  background-color: #5e0075;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  white-space: nowrap;
-  font-size: 1rem;
-  color: #fff;
-  font-family: 'Noto Sans Regular', sans-serif;
+    padding: 10px 20px;
+    margin: 10px;
+    bottom: 20px;
+    background-color: #5e0075;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    font-size: 1rem;
+    color: #fff;
+    font-family: 'Noto Sans Regular', sans-serif;
 }
 
 .uiTab button:hover {
-  background-color: #6e0085;
+    background-color: #6e0085;
 }
 
+
 /*userTab */
+
 .userTab {
-  position: fixed;
-  top: -100%;
-  left: 20%;
-  right: 0;
-  background-color: #25003b;
-  color: #ffffff;
-  height: 60%;
-  width: 50%;
-  padding: 20px;
-  border-radius: 20px;
-  transition: top 0.3s ease-in-out, margin-left 0.3s ease-in-out;
-  z-index: 2;
+    position: fixed;
+    top: -100%;
+    left: 20%;
+    right: 0;
+    background-color: #25003b;
+    color: #ffffff;
+    height: 60%;
+    width: 50%;
+    padding: 20px;
+    border-radius: 20px;
+    transition: top 0.3s ease-in-out, margin-left 0.3s ease-in-out;
+    z-index: 2;
 }
 
 .userTab.active {
-  top: 14%;
+    top: 14%;
 }
 
 .userTab.push {
-  margin-left: 10%;
+    margin-left: 10%;
 }
 
 .userTab.double {
-  margin-left: 10%;
+    margin-left: 10%;
 }
 
 .userTab.push.double {
-  margin-left: 20%;
+    margin-left: 20%;
 }
 
 .userTab-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: #38005e;
-  color: #ffffff;
-  padding: 10px;
-  border-radius: 20px 20px 0 0;
-  margin-bottom: 20px;
-  z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #38005e;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 20px 20px 0 0;
+    margin-bottom: 20px;
+    z-index: 2;
 }
 
 .userTab-header h2 {
-  font-size: 1.5rem;
-  margin: 0;
-  font-family: 'Noto Sans Regular', sans-serif;
+    font-size: 1.5rem;
+    margin: 0;
+    font-family: 'Noto Sans Regular', sans-serif;
 }
 
 .userTab-header button {
-  width: 50px;
-  height: 50px;
-  margin-right: 5px;
-  background-color: transparent;
-  border: none;
-  position: absolute;
-  cursor: pointer;
-  top: 0px;
-  right: 0px;
+    width: 50px;
+    height: 50px;
+    margin-right: 5px;
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    cursor: pointer;
+    top: 0px;
+    right: 0px;
 }
 
 .userTab-header button img {
-  width: 42px;
-  height: 42px;
-  margin-right: 5px;
-  background-color: transparent;
-  border: none;
-  position: absolute;
-  cursor: pointer;
-  top: 3px;
-  right: 0px;
+    width: 42px;
+    height: 42px;
+    margin-right: 5px;
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    cursor: pointer;
+    top: 3px;
+    right: 0px;
 }
 
-
 .loginTab {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }
 
 .loginTab h3 {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  color: #ffffff;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #ffffff;
 }
 
 .loginTab input {
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
-  background-color: #13001f;
-  color: #fff;
-  margin-bottom: 2%;
-  margin-top: 5%;
-  width: 20%;
-  font-family: 'Noto Sans Regular', sans-serif;
-
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #13001f;
+    color: #fff;
+    margin-bottom: 2%;
+    margin-top: 5%;
+    width: 20%;
+    font-family: 'Noto Sans Regular', sans-serif;
 }
 
 .loginTab img {
-  width: 100px;
-  height: 100px;
-  bottom: 50%;
+    width: 100px;
+    height: 100px;
+    bottom: 50%;
 }
 
 .loginTab p {
-  font-size: large;
-  margin-bottom: 25%;
+    font-size: large;
+    margin-bottom: 25%;
 }
 
 .loginTab button {
-  padding: 10px 20px;
-  margin: 10px;
-  bottom: 20px;
-  background-color: #5e0075;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  white-space: nowrap;
-  font-size: 1rem;
-  color: #fff;
-  font-family: 'Noto Sans Regular', sans-serif;
+    padding: 10px 20px;
+    margin: 10px;
+    bottom: 20px;
+    background-color: #5e0075;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    font-size: 1rem;
+    color: #fff;
+    font-family: 'Noto Sans Regular', sans-serif;
 }
 
 #avatarFile {
-  display: none;
+    display: none;
 }
 
 #AvatarPreview {
-  position: absolute;
-  display: inline;
-  height: auto;
-  width: 20%;
-  top: 145%;
-  left: 40%;
-  z-index: 10;
+    position: absolute;
+    display: inline;
+    height: auto;
+    width: 20%;
+    top: 151%;
+    left: 40%;
+    z-index: 10;
 }
 
 .loginTab .custom-upload-button {
-  padding: 10px 20px;
-  margin: 10px;
-  bottom: 20px;
-  background-color: #5e0075;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  white-space: nowrap;
-  font-size: 1rem;
-  color: #fff;
-  font-family: 'Noto Sans Regular', sans-serif;
+    padding: 10px 20px;
+    margin: 10px;
+    bottom: 20px;
+    background-color: #5e0075;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    font-size: 1rem;
+    color: #fff;
+    font-family: 'Noto Sans Regular', sans-serif;
 }
 
 .loginTab button:hover {
-  background-color: #6e0085;
+    background-color: #6e0085;
 }
 
+
 /*debug tab */
+
 .debugTab {
-  position: fixed;
-  top: 12%;
-  bottom: -100%;
-  left: -5%;
-  margin-left: -15%;
-  right: 0;
-  background-color: #25003b;
-  color: #ffffff;
-  height: 64.5%;
-  width: 15%;
-  padding: 20px;
-  border-radius: 20px;
-  transition: bottom 0.3s ease-in-out, margin-left 0.3s ease-in-out;
-  z-index: 0;
+    position: fixed;
+    top: 12%;
+    bottom: -100%;
+    left: -5%;
+    margin-left: -15%;
+    right: 0;
+    background-color: #25003b;
+    color: #ffffff;
+    height: 64.5%;
+    width: 15%;
+    padding: 20px;
+    border-radius: 20px;
+    transition: bottom 0.3s ease-in-out, margin-left 0.3s ease-in-out;
+    z-index: 0;
 }
 
 #BotAvatarPreview {
-  position: absolute;
-  display: inline;
-  height: 23%;
-  width: 46%;
-  top: 59%;
-  left: 28%;
-  z-index: 10;
+    position: absolute;
+    display: inline;
+    height: 23%;
+    width: 46%;
+    top: 59%;
+    left: 28%;
+    z-index: 10;
 }
 
 #botAvatarFile {
-  display: none;
+    display: none;
 }
 
 .debugTab .custom-upload-button {
-  padding: 10px 20px;
-  margin: 10px;
-  bottom: 20px;
-  background-color: #5e0075;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  white-space: nowrap;
-  font-size: 1rem;
-  color: #fff;
-  font-family: 'Noto Sans Regular', sans-serif;
+    padding: 10px 20px;
+    margin: 10px;
+    bottom: 20px;
+    background-color: #5e0075;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    font-size: 1rem;
+    color: #fff;
+    font-family: 'Noto Sans Regular', sans-serif;
 }
 
 .debugTab input {
-  margin-top: 15%;
+    margin-top: 15%;
 }
 
 .debugTab.active {
-  margin-left: 4%;
+    margin-left: 4%;
 }
 
 .debugTab.push {
-  margin-left: 0%;
+    margin-left: 0%;
 }
 
 .debugTab.push.active {
-  margin-left: 20%;
+    margin-left: 20%;
 }
 
+
 /* Debug tab header */
+
 .debugTab-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: #38005e;
-  color: #ffffff;
-  padding: 10px;
-  border-radius: 20px 20px 0 0;
-  margin-bottom: 20px;
-  z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #38005e;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 20px 20px 0 0;
+    margin-bottom: 20px;
+    z-index: 2;
 }
 
 .debugTab-header h2 {
-  font-size: 1.5rem;
-  margin-left: 5px;
-  margin-top: 0;
-  margin-bottom: 0;
-  font-family: 'Noto Sans Regular', sans-serif;
+    font-size: 1.5rem;
+    margin-left: 5px;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: 'Noto Sans Regular', sans-serif;
 }
 
 .debugTab-header button {
-  width: 50px;
-  height: 50px;
-  margin-right: 5px;
-  background-color: transparent;
-  border: none;
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  right: 0;
+    width: 50px;
+    height: 50px;
+    margin-right: 5px;
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    right: 0;
 }
 
 .debugTab-header button img {
-  width: 42px;
-  height: 42px;
-  margin-right: 5px;
-  background-color: transparent;
-  border: none;
-  position: absolute;
-  cursor: pointer;
-  top: 3px;
-  right: 0;
+    width: 42px;
+    height: 42px;
+    margin-right: 5px;
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    cursor: pointer;
+    top: 3px;
+    right: 0;
 }
 
+
 /*bot tab*/
+
 .botTab {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }
 
 .botTab h3 {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  color: #ffffff;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #ffffff;
 }
 
 .botTab input {
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
-  background-color: #13001f;
-  color: #fff;
-  margin-bottom: 10px;
-  width: 300px;
-  max-width: 50%;
-  margin-bottom: 50%;
-  font-family: 'Noto Sans Regular', sans-serif;
-
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #13001f;
+    color: #fff;
+    margin-bottom: 10px;
+    width: 300px;
+    max-width: 50%;
+    margin-bottom: 50%;
+    font-family: 'Noto Sans Regular', sans-serif;
 }
 
 .botTab img {
-  width: 100px;
-  height: 100px;
-  bottom: 53%;
+    width: 100px;
+    height: 100px;
+    bottom: 53%;
 }
 
 .botTab p {
-  font-size: large;
-  margin-bottom: 70%;
+    font-size: large;
+    margin-bottom: 70%;
 }
 
-
 .botTab button {
-  padding: 10px 20px;
-  margin: 10px;
-  bottom: 20px;
-  background-color: #5e0075;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  white-space: nowrap;
-  font-size: 1rem;
-  color: #fff;
-  font-family: 'Noto Sans Regular', sans-serif;
+    padding: 10px 20px;
+    margin: 10px;
+    bottom: 20px;
+    background-color: #5e0075;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    font-size: 1rem;
+    color: #fff;
+    font-family: 'Noto Sans Regular', sans-serif;
 }
 
 .botTab button:hover {
-  background-color: #6e0085;
+    background-color: #6e0085;
 }
 
+
 /*Hamburger Menu*/
+
 .hamburgerMenu {
-  display: ruby;
-  position: fixed;
-  background-color: #1b002b;
-  color: #ffffff;
-  top: 89%;
-  left: 21.5%;
-  height: 1%;
-  width: 14%;
-  border-radius: 8%;
-  transition: height 0.3s ease-out, top 0.3s ease-out;
-  z-index: 1;
+    display: ruby;
+    position: fixed;
+    background-color: var(--sidebar-color);
+    color: #ffffff;
+    top: 89%;
+    left: 21.5%;
+    height: 1%;
+    width: 14%;
+    border-radius: 8%;
+    transition: height 0.3s ease-out, top 0.3s ease-out;
+    z-index: 1;
 }
 
 .hamburgerMenu.active {
-  height: 56%;
-  top: 52%;
+    height: 45%;
+    top: 50%;
 }
 
 .hamburgerMenu.push {
-  margin-left: 0%;
+    margin-left: 0%;
 }
 
 .hamburgerMenu button {
-  margin: -2%;
-  display: none;
-  border: none;
-  background: none;
-  transition: height 0.3s;
-  margin-left: 14%;
-  cursor: pointer;
+    margin: -2%;
+    display: none;
+    border: none;
+    background: none;
+    transition: height 0.3s;
+    margin-left: 14%;
+    cursor: pointer;
 }
 
 .hamburgerMenu button img {
-  position: absolute;
-  left: 4.5%;
-  margin-top: 6%;
-  height: auto;
-  width: 10%;
+    position: absolute;
+    left: 4.5%;
+    margin-top: 6%;
+    height: auto;
+    width: 10%;
 }
 
 .hamburgerMenu.historyconv {
-  position: absolute;
-  right: 84%;
-  top: 4%;
-  height: auto;
-  width: 10%;
+    position: absolute;
+    right: 84%;
+    top: 4%;
+    height: auto;
+    width: 10%;
 }
 
 .hamburgerMenu button p {
-  color: #ffffff;
+    color: #ffffff;
 }
 
 .hamburgerMenu.active button {
-  display: inherit;
+    display: inherit;
 }
 
 .hamburgerMenu #slash {
-  display: flex;
-  margin-left: 0.5%;
-  background-color: #ffffff;
-  height: 0.05%;
-  width: 99%;
+    display: flex;
+    margin-left: 0.5%;
+    background-color: var(--true-background-color);
+    height: 0.5%;
+    width: 99%;
 }
+
 
 /*
 background/input box color: #13001f
@@ -1599,4 +1625,3 @@ user color: #f0a12a
 button color: #5e0075
 button hover color: #6e0085
 */
-
